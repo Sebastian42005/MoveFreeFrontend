@@ -1,0 +1,75 @@
+.spot-item {
+    display: grid;
+    background: linear-gradient(
+            135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)
+    );
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 24px;
+    place-items: center;
+    min-width: 350px;
+    max-width: 380px;
+    min-height: 100%;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-container > mat-icon {
+    color: white;
+    transform: scale(1.8);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.image-container > mat-icon:hover {
+    transform: scale(2.1);
+}
+
+.wrapper {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 1.5vw;
+}
+
+.spot-item-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5vw;
+    object-fit: cover;
+    transition: transform 400ms;
+    cursor: pointer;
+}
+
+.wrapper:hover img {
+    transform: scale(1.1);
+}
+
+.normal {
+    max-width: 90%;
+}
+
+.trimToTwoLines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-width: 90%;
+    cursor: pointer;
+}
+
+.noTrim {
+    max-width: 90%;
+    cursor: pointer;
+}

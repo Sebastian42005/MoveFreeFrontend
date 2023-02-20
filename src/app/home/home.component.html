@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="header">
+        <h2 class="header-title">Move Free</h2>
+        <div class="navigations">
+            <h2 routerLink="/map">Map</h2>
+            <h2 routerLink="/login">Login</h2>
+            <div class="profile-picture-wrapper">
+                <img routerLink="profile" *ngIf="profilePic" [src]="profilePic" alt="Profile Picture">
+            </div>
+        </div>
+        <mat-icon [ngStyle]="{'display': showMobileNavigation}" (click)="showMobileNavigation = !showMobileNavigation" class="mobile-navigation-button">{{showMobileNavigation ? 'close' : 'menu'}}</mat-icon>
+    </div>
+    <div *ngIf="showMobileNavigation" class="mobile-navigation-header">
+        <h3 routerLink="/map">Map</h3>
+        <h3 routerLink="/profile">Profile</h3>
+        <h3 routerLink="/login">Login</h3>
+    </div>
+    <app-spot-list [spots]="spots"></app-spot-list>
+</div>

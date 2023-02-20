@@ -1,0 +1,14 @@
+<div class="spot-item">
+    <div class="image-container">
+        <mat-icon *ngIf="currentImageIndex != 0 && spot.pictures.length > 0" (click)="decreaseImage()">keyboard_arrow_left</mat-icon>
+        <mat-icon *ngIf="currentImageIndex == 0"></mat-icon>
+        <div class="wrapper">
+            <img #image (click)="image.requestFullscreen()"
+                 *ngIf="spot.user != ''"
+                 [src]="spot.pictures.length > 0 ? 'http://localhost:8080/api/spot/pictures/' + spot.pictures[this.currentImageIndex] : imageUrl" class="spot-item-image" alt="">
+        </div>
+        <mat-icon *ngIf="currentImageIndex >= spot.pictures.length - 1"></mat-icon>
+        <mat-icon *ngIf="currentImageIndex < spot.pictures.length - 1  && spot.pictures.length > 0" (click)="increaseImage()">keyboard_arrow_right</mat-icon>
+    </div>
+    <h4 (click)="this.fullText = !this.fullText" [ngClass]="showFullText()" #description>{{spot.description}}</h4>
+</div>
