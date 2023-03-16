@@ -1,5 +1,5 @@
 export enum SpotType {
-    PARKOUR = "parkour",
-    FREERUNNING = "freerunning",
-    CALISTHENICS = "calisthenics"
+  PARKOUR = "parkour",
+  FREERUNNING = "freerunning",
+  CALISTHENICS = "calisthenics"
 }

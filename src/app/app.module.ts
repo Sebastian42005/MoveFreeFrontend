@@ -1,52 +1,54 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
-import {RouterModule, Routes} from "@angular/router";
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import {MatIconModule} from "@angular/material/icon";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MapComponent } from './map/map.component';
-import {MatInputModule} from "@angular/material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
-import {UserProfileComponent} from "./user-profile/user-profile.component";
-import { SpotComponent } from './spots/spot/spot.component';
-import { SpotListComponent } from './spots/spot-list/spot-list.component';
-
-const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "map", component: MapComponent},
-  {path: "login", component: LoginComponent},
-  {path: "user/:username", component: UserProfileComponent}
-]
+import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageExploreSpotsComponent } from './home-page/home-page-explore-spots/home-page-explore-spots.component';
+import { HomePageInfoComponent } from './home-page/home-page-info/home-page-info.component';
+import { HomePageHeaderComponent } from './home-page/home-page-header/home-page-header.component';
+import { HomePageExploreUserComponent } from './home-page/home-page-explore-user/home-page-explore-user.component';
+import { RegisterComponent } from './login/register/register.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {InputValidatorComponent} from "./input-field/input-validator.component";
+import { LoginComponent } from './login/login/login.component';
+import { PopupInfoComponent } from './popup-info/popup-info.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
-      UserProfileComponent,
+    HomePageComponent,
+    HomePageExploreSpotsComponent,
+    HomePageInfoComponent,
+    HomePageHeaderComponent,
+    HomePageExploreUserComponent,
+    RegisterComponent,
+    InputValidatorComponent,
     LoginComponent,
-    HomeComponent,
-    MapComponent,
-    SpotComponent,
-    SpotListComponent
+    PopupInfoComponent,
   ],
   imports: [
-    MatInputModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    BrowserModule,
+    AppRoutingModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
     FormsModule,
-  ],
-  exports: [
-      RouterModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

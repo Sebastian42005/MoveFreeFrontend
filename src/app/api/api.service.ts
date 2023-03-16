@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {Spot} from "./dataclasses/Spot";
 import {LoginResponse} from "./dataclasses/LoginResponse";
 import {User} from "./dataclasses/User";
-import {Spot} from "./dataclasses/Spot";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
+
 
   public getAllSpots(spotTypes?: string[], cities?: string[], limit?: number): Observable<Spot[]> {
     spotTypes = spotTypes ? spotTypes : []
@@ -30,11 +31,11 @@ export class ApiService {
     localStorage.removeItem("token")
     localStorage.removeItem("username")
     let body = {username: username, email: email, password: password}
-    return this.post("/authentication/register", body)
+    return this.post<User>("/authentication/register", body)
   }
 
   public getOwnProfile(): Observable<User> {
-    return this.get("/user")
+    return this.get("/user/own")
   }
 
   public getUser(username: string): Observable<User> {
