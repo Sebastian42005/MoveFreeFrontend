@@ -1,0 +1,10 @@
+<div class="body">
+  <h1>Login</h1>
+  <app-input-validator [maxCharLength]=40 placeholder="Username" [required]=true [(text)]="username"></app-input-validator>
+  <app-input-validator placeholder="Password" type="password" [required]=true [(text)]="password" [hasMaxCharLength]=false></app-input-validator>
+  <button (click)="close()" mat-raised-button color="accent">Login</button>
+  <div class="register-div">
+    <span>No account?</span>
+    <span class="register-btn">Register</span>
+  </div>
+</div>

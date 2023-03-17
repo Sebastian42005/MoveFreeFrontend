@@ -1,0 +1,22 @@
+@import './theme.scss';
+
+* {
+  font-family: sans-serif;
+}
+
+html, body {
+  background: var(--primary-dark);
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mat-mdc-snack-bar-container {
+  &.error {
+    --mdc-snackbar-container-color: darkred;
+  }
+  &.success {
+    --mdc-snackbar-container-color: green;
+  }
+}

@@ -1,0 +1,54 @@
+.body {
+  background: white;
+  width: 20vw;
+  padding: 30px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  app-input-validator {
+    margin-top: -10px;
+    width: 80%;
+  }
+
+
+  * {
+    color: black;
+  }
+
+  h1 {
+    margin-bottom: 5vh;
+  }
+
+  button {
+    width: 80%;
+    height: 50px;
+    background: var(--primary-light);
+    color: white;
+    margin-top: 20px;
+  }
+
+  div {
+    display: flex;
+    gap: 10px;
+
+    span {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #3d3d3d;
+    }
+
+    .register-btn {
+      color: var(--accent-dark);
+      cursor: pointer;
+    }
+
+    .register-btn:hover {
+      text-decoration: underline;
+    }
+
+  }
+}
+
+

@@ -1,0 +1,11 @@
+<div class="body">
+  <h1>Find User</h1>
+  <div class="users-div">
+    <div class="user" *ngFor="let user of users">
+      <div>
+        <img src="{{user.url}}">
+      </div>
+      <h2>{{user.name}}</h2>
+    </div>
+  </div>
+</div>
