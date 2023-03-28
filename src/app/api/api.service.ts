@@ -13,11 +13,12 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
 
-  public getAllSpots(spotTypes?: string[], cities?: string[], limit?: number): Observable<Spot[]> {
+  public getAllSpots(spotTypes?: string[], cities?: string[], alreadySeenList?: string[], limit?: number): Observable<Spot[]> {
     spotTypes = spotTypes ? spotTypes : []
     cities = cities ? cities : []
+    alreadySeenList = alreadySeenList? alreadySeenList : []
     limit = limit ? limit : 5
-    return this.get(`/spot/all?city=${cities.toString()}&limit=${limit}&spotTypes=${spotTypes}`)
+    return this.get(`/spot/all?city=${cities.toString()}&limit=${limit}&spotTypes=${spotTypes}&alreadySeenList=${alreadySeenList}`)
   }
 
   public login(username: string, password: string): Observable<LoginResponse> {

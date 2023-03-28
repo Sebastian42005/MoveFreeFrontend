@@ -61,8 +61,10 @@ export class HomePageHeaderComponent implements OnInit{
   checkForLogin() {
     let token = localStorage.getItem("token")
     if (token != null && token.length > 0) {
-      this.isLoggedIn = true
-      this.image = "http://localhost:8080/api/user/own";
+      this.apiService.getOwnProfile().subscribe(response => {
+        this.isLoggedIn = true
+        this.image = "http://localhost:8080/api/user/" + response.username + "/profile";
+      });
     }
   }
 }

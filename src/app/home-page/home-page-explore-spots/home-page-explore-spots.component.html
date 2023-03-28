@@ -1,25 +1,14 @@
 <div class="body">
   <h1>Explore Spots</h1>
-  <div class="spots-div">
-    <div>
-      <img src="assets/images/spot/spot1.jpg" alt="spot1">
-      <h2>Skateboard park mit vielen möglichkeiten</h2>
-    </div>
-    <div>
-      <img src="assets/images/spot/spot2.jpg" alt="spot2">
-      <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,</h2>
-    </div>
-    <div>
-      <img src="assets/images/spot/spot3.jpeg" alt="spot3">
-      <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,</h2>
-    </div>
-    <div>
-      <img src="assets/images/spot/spot4.jpg" alt="spot4">
-      <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</h2>
-    </div>
-    <div>
-      <img src="assets/images/spot/spot5.jpg" alt="spot5">
-      <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h2>
-    </div>
-  </div>
+  <mat-grid-list cols="9" rowHeight="50%">
+    <mat-grid-tile
+            *ngFor="let tile of images"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows">
+      <div class="spots-div">
+        <img src="{{tile.image}}" alt="image">
+        <h2>{{tile.text}}</h2>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

@@ -10,64 +10,46 @@
 h1 {
   margin-bottom: 30px;
   font-size: 50px;
+  height: 5vh;
 }
 
 img {
   width: 100%;
 }
 
+mat-grid-list {
+  height: 95vh;
+  width: 100vw;
+}
+
 .spots-div {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  position: relative;
   width: 100%;
-  overflow: hidden;
+  height: 100%;
 
-  div {
-    position: relative;
-
-    h2 {
-      color: white;
-      position: absolute;
-      top: 25px;
-      left: 25px;
-      transition: 0.5s;
-      opacity: 0;
-    }
-  }
-
-  div:hover {
-    h2 {
-      opacity: 100%;
-    }
-    img {
-      opacity: 0.5;
-    }
+  h2 {
+    color: white;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    transition: 0.5s;
+    opacity: 0;
   }
 
   img {
     cursor: pointer;
     transition: 0.5s;
+    object-fit: cover;
     height: 100%;
+    width: 100%;
   }
+}
 
-  div:nth-child(2) {
-    height: 80%;
+.spots-div:hover {
+  h2 {
+    opacity: 100%;
   }
-
-  div:nth-child(5) {
-    height: 130.9%;
-    margin-top: -16.7%;
+  img {
+    opacity: 0.5;
   }
-
-  div:nth-child(4) {
-    height: 115.9%;
-  }
-
-  div:nth-child(3) {
-    grid-row-start: 1;
-    grid-column-start: 3;
-    grid-row-end: 3;
-    width: 200%;
-  }
-
 }
