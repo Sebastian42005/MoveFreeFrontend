@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ApiService} from "../../api/api.service";
 import {PopupInfoComponent, PopupInfoData} from "../../popup-info/popup-info.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ThisReceiver} from "@angular/compiler";
+import {RegisterComponent} from "../register/register.component";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import {ThisReceiver} from "@angular/compiler";
 export class LoginComponent {
   username = ""
   password = ""
-  constructor(private matDialogRef: MatDialogRef<LoginComponent>, private apiService: ApiService, private snackBar: MatSnackBar) {}
+  constructor(private matDialogRef: MatDialogRef<LoginComponent>, private apiService: ApiService, private snackBar: MatSnackBar, private matDialog: MatDialog) {}
 
   close() {
     this.apiService.login(this.username, this.password).subscribe(response => {
@@ -38,6 +39,25 @@ export class LoginComponent {
       horizontalPosition: "center",
       data: new PopupInfoData(message, error),
       panelClass: [error ? 'error': 'success']
+    });
+  }
+
+  openRegisterDialog() {
+    this.matDialogRef.close()
+    let registerDialog = this.matDialog.open(RegisterComponent);
+    registerDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.apiService.register(result.username, result.email, result.password).subscribe(_ => {
+          this.openSnackBar("Register complete", false)
+          //this.openLoginDialog()
+        }, (error: HttpErrorResponse) => {
+          if (error.status == 409) {
+            this.openSnackBar("User already exists", true)
+          }else {
+            this.openSnackBar("Login failed", true)
+          }
+        })
+      }
     });
   }
 }

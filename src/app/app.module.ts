@@ -25,6 +25,9 @@ import {ExploreSpotsComponent} from './explore-spots/explore-spots.component';
 import {RouterModule, Routes} from "@angular/router";
 import {listAnimation} from "./animations";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { ExploreSpotsHeaderComponent } from './explore-spots/explore-spots-header/explore-spots-header.component';
+import { ExploreSpotsFilterComponent } from './explore-spots/explore-spots-filter/explore-spots-filter.component';
+import {MatAutocomplete, MatAutocompleteModule} from "@angular/material/autocomplete";
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -44,12 +47,15 @@ const routes: Routes = [
         LoginComponent,
         PopupInfoComponent,
         ExploreSpotsComponent,
+        ExploreSpotsHeaderComponent,
+        ExploreSpotsFilterComponent,
     ],
     imports: [
         MatButtonToggleModule,
         HttpClientModule,
         BrowserModule,
         MatButtonModule,
+        MatAutocompleteModule,
         MatDialogModule,
         MatFormFieldModule,
         MatGridListModule,
