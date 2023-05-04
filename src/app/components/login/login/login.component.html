@@ -1,0 +1,10 @@
+<div class="body">
+  <h1>Login</h1>
+  <app-input-validator [maxCharLength]=40 placeholder="Username" (textChange)="checkForLoginUsername($event)" [required]=true [(text)]="username"></app-input-validator>
+  <app-input-validator placeholder="Password" type="password" (textChange)="checkForLoginPassword($event)" [required]=true [(text)]="password" [hasMaxCharLength]=false></app-input-validator>
+  <app-button [disabled]="!canLogin" (click)="close()" text="Login"></app-button>
+  <div class="register-div">
+    <span>No account?</span>
+    <span (click)="openRegisterDialog()" class="register-btn">Register</span>
+  </div>
+</div>

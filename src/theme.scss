@@ -71,9 +71,9 @@ $dark-accent-palette: (
 );
 
 :root {
-  --primary-dark: #002349;
-  --primary-dark2: #011b38;
-  --accent-dark: #957c3d;
+  --primary: #002349;
+  --primary2: #011b38;
+  --accent: #957c3d;
 }
 
 $dark-theme: mat.define-light-theme((
@@ -89,6 +89,7 @@ $dark-theme: mat.define-light-theme((
 // Apply the dark theme by default
 @include mat.all-component-themes($dark-theme);
 @include mat.autocomplete-theme($dark-theme);
+@include mat.button-theme($dark-theme);
 
 @media (prefers-color-scheme: dark) {
   :root {

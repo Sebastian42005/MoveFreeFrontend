@@ -1,0 +1,69 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  padding-left: 25px;
+  background: var(--primary);
+
+  div {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  p:hover {
+    transform: scale(1.04);
+  }
+
+  p {
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.1s;
+  }
+
+  .register-p {
+    border: 3px solid var(--accent);
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 5px;
+  }
+
+  .title {
+    font-size: 2.8vw;
+  }
+
+  .filter-div {
+    margin-left: 10px;
+  }
+
+  .title, .login-div, .spacer {
+    flex: 1;
+  }
+
+  .login-div {
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+
+    img, div {
+      margin-right: 20px;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  app-profile-picture {
+    margin-right: 22px;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .header {
+    .title {
+      font-size: 30px;
+    }
+  }
+}

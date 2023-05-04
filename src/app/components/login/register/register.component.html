@@ -1,0 +1,21 @@
+<div class="body">
+  <h1>Create a MoveFree Account</h1>
+  <app-input-validator [maxCharLength]=40 placeholder="Username" (textChange)="canRegisterUsername($event)"
+                       [required]=true
+                       [(text)]="username"></app-input-validator>
+  <app-input-validator class="email" placeholder="Email"
+                       [hasMaxCharLength]=false
+                       (textChange)="canRegisterEmail($event)"
+                       [required]=true
+                       [(text)]="email"></app-input-validator>
+  <app-input-validator placeholder="Password" type="password"
+                       (textChange)="canRegisterPassword($event)"
+                       [required]=true
+                       [(text)]="password"
+                       [hasMaxCharLength]=false></app-input-validator>
+  <app-button [disabled]="!canRegister" (click)="close()" text="Register"></app-button>
+  <div class="login-div">
+    <span>Already have an account?</span>
+    <span (click)="openLoginDialog()" class="login-btn">Login</span>
+  </div>
+</div>

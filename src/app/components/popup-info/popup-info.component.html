@@ -1,0 +1,5 @@
+<div class="body">
+  <mat-icon [ngClass]="getIconClass()">{{data.error ? "error" : "check"}}</mat-icon>
+  <span class="message">{{data.message}}</span>
+  <mat-icon class="close" (click)="snackBarRef.dismissWithAction()">close</mat-icon>
+</div>

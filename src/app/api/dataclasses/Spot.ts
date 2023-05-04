@@ -2,7 +2,7 @@ export interface Spot {
   id:          string;
   description: string;
   location: Location;
-  spotType: string;
+  spotType: string[];
   user: string;
   pictures: string[];
 }

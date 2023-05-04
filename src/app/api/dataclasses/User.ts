@@ -1,10 +1,10 @@
-import {Spot} from "./Spot";
-
 export interface User {
   username: string;
-  role: string;
-  spots: Spot[];
-  follows: number;
+  description: string;
+  spotsAmount: number;
+  averageRating: number;
+  isFollowed: boolean;
   follower: number;
-  companyDTO: null;
+  follows: number;
 }
+

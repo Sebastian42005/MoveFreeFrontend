@@ -1,0 +1,27 @@
+<app-explore-spots-header [profileImg]="profileImg" [isLoading]="!isSpotsLoaded"></app-explore-spots-header>
+<div class="body">
+    <app-explore-spots-filter></app-explore-spots-filter>
+    <div *ngIf="!isSpotsLoaded" class="loading-div">
+        <app-loading></app-loading>
+    </div>
+    <app-not-found *ngIf="spots.length <= 0 && isSpotsLoaded" width="100%" height="100%" message="No spots found"></app-not-found>
+    <mat-grid-list *ngIf="isSpotsLoaded" cols="10" rowHeight="10vh">
+        <mat-grid-tile
+                *ngFor="let spot of spots; index as i"
+                [colspan]="spot.col"
+                [rowspan]="spot.row"
+                [@fadeIn]="i">
+            <div class="spots-div">
+                <div class="wrapper">
+                    <img src="{{spot.imageUrl}}" alt="image">
+                </div>
+                <h2>{{spot.spot.description}}</h2>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <div *ngIf="showLoadNewSpots && spots.length > 0" class="load-new-div">
+        <button (click)="loadMoreSpots()" mat-fab color="primary">
+            <mat-icon>autorenew</mat-icon>
+        </button>
+    </div>
+</div>
