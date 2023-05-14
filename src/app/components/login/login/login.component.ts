@@ -5,6 +5,7 @@ import {ApiService} from "../../../api/api.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegisterComponent} from "../register/register.component";
 import {showMessageEmitter} from "../../../app.component";
+import {UserRole} from "../../../api/dataclasses/UserRole";
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,10 @@ export class LoginComponent {
         "message": "Login complete",
         "error": false
       })
-      loginEmitter.emit(this.username)
+      loginEmitter.emit({
+        "username": this.username,
+        "role": response.role
+      })
     }, (error: HttpErrorResponse) => {
       if (error.status == 401) {
         showMessageEmitter.emit({
@@ -57,4 +61,4 @@ export class LoginComponent {
   }
 }
 
-export const loginEmitter = new EventEmitter<string>();
+export const loginEmitter = new EventEmitter<UserRole>();

@@ -5,6 +5,8 @@ import {ApiService} from "../../../api/api.service";
 import {LoginComponent, loginEmitter} from "../../../components/login/login/login.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {PopupInfoComponent, PopupInfoData} from "../../../components/popup-info/popup-info.component";
+import {Router} from "@angular/router";
+import {Role} from "../../../api/dataclasses/Role";
 
 @Component({
     selector: 'app-home-page-header',
@@ -17,7 +19,7 @@ export class HomePageHeaderComponent implements OnInit {
     username = ""
     isImageLoaded = false;
 
-    constructor(private matDialog: MatDialog, private apiService: ApiService, private snackBar: MatSnackBar) {
+    constructor(private matDialog: MatDialog, private apiService: ApiService, private snackBar: MatSnackBar, private router: Router) {
     }
 
     openRegisterDialog() {
@@ -30,8 +32,11 @@ export class HomePageHeaderComponent implements OnInit {
 
     ngOnInit(): void {
         this.checkForLogin();
-        loginEmitter.subscribe(username => {
-            this.setLoggedIn(username)
+        loginEmitter.subscribe(userRole => {
+            this.setLoggedIn(userRole.username)
+            if (userRole.role === Role.ADMIN) {
+                this.router.navigate(["admin"]).then(() => {})
+            }
         })
     }
 

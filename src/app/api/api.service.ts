@@ -22,6 +22,10 @@ export class ApiService {
         return this.get(`/spot/all?search=${search.toString()}&limit=${limit}&spotTypes=${spotTypes}&alreadySeenList=${alreadySeenList}`)
     }
 
+    public getSpot(spotId: string): Observable<Spot> {
+        return this.get(`/spot/${spotId}`)
+    }
+
     public login(username: string, password: string): Observable<LoginResponse> {
         localStorage.removeItem("token")
         localStorage.removeItem("username")
