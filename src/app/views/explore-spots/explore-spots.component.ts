@@ -5,7 +5,8 @@ import {searchEmitter} from "./explore-spots-header/explore-spots-header.compone
 import {Router} from "@angular/router";
 import {User} from "../../api/dataclasses/User";
 import {ApiService} from "../../api/api.service";
-import {GridGenerator, GridSpot} from "../../api/helper/GridGenerator";
+import {GridGenerator, GridSpot} from "../../helper/GridGenerator";
+import {LocalStorageManager} from "../../helper/LocalStorageManager";
 
 
 @Component({
@@ -35,7 +36,7 @@ export class ExploreSpotsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (localStorage.getItem("token") != null) {
+        if (LocalStorageManager.isLoggedIn()) {
             this.apiService.getOwnProfile().subscribe(own => {
                 this.ownProfile = own;
                 this.profileImg = `http://localhost:8080/api/user/${own.username}/profile`

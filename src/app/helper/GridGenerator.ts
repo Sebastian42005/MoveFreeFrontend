@@ -1,8 +1,8 @@
-import {Spot} from "../dataclasses/Spot";
-import grid6List from "../../../assets/gridtemplates/grid6.json";
-import grid5List from "../../../assets/gridtemplates/grid5.json";
-import gridRemaining from "../../../assets/gridtemplates/gridRemaining.json";
-import {getSpotImage} from "../api.service";
+import {Spot} from "../api/dataclasses/Spot";
+import grid6List from "../../assets/gridtemplates/grid6.json";
+import grid5List from "../../assets/gridtemplates/grid5.json";
+import gridRemaining from "../../assets/gridtemplates/gridRemaining.json";
+import {getSpotImage} from "../api/api.service";
 
 export class GridGenerator {
 

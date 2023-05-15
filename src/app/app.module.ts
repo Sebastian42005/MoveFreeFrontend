@@ -43,8 +43,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {UploadSpotComponent} from './components/upload-spot/upload-spot.component';
 import {MatSelectModule} from "@angular/material/select";
 import {SelectComponent} from './components/select/select.component';
-import { AdminComponent } from './views/admin/admin.component';
-import { SpotComponent } from './views/spot/spot.component';
+import {AdminComponent} from './views/admin/admin.component';
+import {SpotComponent} from './views/spot/spot.component';
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -121,4 +121,5 @@ const routes: Routes = [
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

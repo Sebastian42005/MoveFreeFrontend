@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {scaleAnimation} from "../../../animations/animations";
 import {ActivatedRoute} from "@angular/router";
+import {LocalStorageManager} from "../../../helper/LocalStorageManager";
 
 @Component({
   selector: 'app-explore-spots-header',
@@ -13,7 +14,7 @@ export class ExploreSpotsHeaderComponent implements OnInit{
   @Input() profileImg = "assets/images/profile.png";
   search = ""
   isImageLoaded = false;
-  username = localStorage.getItem("username")
+  username = LocalStorageManager
 
   constructor(private router: ActivatedRoute) {
 

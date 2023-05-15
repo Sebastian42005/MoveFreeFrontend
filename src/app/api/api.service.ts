@@ -5,14 +5,14 @@ import {Spot} from "./dataclasses/Spot";
 import {LoginResponse} from "./dataclasses/LoginResponse";
 import {User} from "./dataclasses/User";
 import {SpotType} from "./dataclasses/SpotType";
+import {LocalStorageManager} from "../helper/LocalStorageManager";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
 
-    constructor(private httpClient: HttpClient) {
-    }
+    constructor(private httpClient: HttpClient) {}
 
     public getAllSpots(spotTypes?: string[], search?: string, alreadySeenList?: string[], limit?: number): Observable<Spot[]> {
         spotTypes = spotTypes ? spotTypes : []
@@ -27,8 +27,7 @@ export class ApiService {
     }
 
     public login(username: string, password: string): Observable<LoginResponse> {
-        localStorage.removeItem("token")
-        localStorage.removeItem("username")
+        LocalStorageManager.removeTokenAndUsername()
         let body = {username: username, password: password}
         return this.post("/authentication/login", body)
     }
@@ -38,8 +37,7 @@ export class ApiService {
     }
 
     public register(username: string, email: string, password: string): Observable<User> {
-        localStorage.removeItem("token")
-        localStorage.removeItem("username")
+        LocalStorageManager.removeTokenAndUsername()
         let body = {username: username, email: email, password: password}
         return this.post<User>("/authentication/register", body)
     }
@@ -86,6 +84,10 @@ export class ApiService {
         return this.get(`/user/${username}`)
     }
 
+    public getUsername(): Observable<string> {
+        return this.get("/user/own/username")
+    }
+
     public getUserSpots(username: string, alreadySeenList?: string[], limit?: number): Observable<Spot[]> {
         username = username ? username : ""
         alreadySeenList = alreadySeenList ? alreadySeenList : []
@@ -96,7 +98,7 @@ export class ApiService {
     private get<T>(url: string): Observable<T> {
         return this.httpClient.get<T>(baseUrl + url, {
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token"),
+                "Authorization": "Bearer " + LocalStorageManager.getToken(),
             }
         });
     }
@@ -104,7 +106,7 @@ export class ApiService {
     private post<T>(url: string, body: any): Observable<T> {
         return this.httpClient.post<T>(baseUrl + url, body, {
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + LocalStorageManager.getToken()
             }
         });
     }
@@ -112,7 +114,7 @@ export class ApiService {
     private delete<T>(url: string): Observable<T> {
         return this.httpClient.delete<T>(baseUrl + url, {
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + LocalStorageManager.getToken()
             }
         });
     }
@@ -120,7 +122,7 @@ export class ApiService {
     private put<T>(url: string, body: any): Observable<T> {
         return this.httpClient.put<T>(baseUrl + url, body, {
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + LocalStorageManager.getToken()
             }
         });
     }

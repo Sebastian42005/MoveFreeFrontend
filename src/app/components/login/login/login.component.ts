@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegisterComponent} from "../register/register.component";
 import {showMessageEmitter} from "../../../app.component";
 import {UserRole} from "../../../api/dataclasses/UserRole";
+import {LocalStorageManager} from "../../../helper/LocalStorageManager";
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,14 @@ export class LoginComponent {
   username = ""
   password = ""
   canLogin = false
-  constructor(private matDialogRef: MatDialogRef<LoginComponent>, private apiService: ApiService, private snackBar: MatSnackBar, private matDialog: MatDialog) {}
+  constructor(private matDialogRef: MatDialogRef<LoginComponent>,
+              private apiService: ApiService,
+              private snackBar: MatSnackBar,
+              private matDialog: MatDialog) {}
 
   close() {
     this.apiService.login(this.username, this.password).subscribe(response => {
-      localStorage.setItem("token", response.token)
-      localStorage.setItem("username", this.username)
+      LocalStorageManager.setTokenAndUsername(response.token, this.username)
       this.matDialogRef.close()
       showMessageEmitter.emit({
         "message": "Login complete",

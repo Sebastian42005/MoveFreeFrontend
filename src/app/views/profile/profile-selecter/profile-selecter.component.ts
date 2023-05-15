@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ApiService} from "../../../api/api.service";
 import {User} from "../../../api/dataclasses/User";
+import {LocalStorageManager} from "../../../helper/LocalStorageManager";
 
 @Component({
     selector: 'app-profile-selecter',
@@ -22,7 +23,7 @@ export class ProfileSelecterComponent implements OnInit {
             this.apiService.getUser(params['username']).subscribe(user => {
                 this.isLoading = false;
                 this.user = user;
-                this.isOwnProfile = params['username'] == localStorage.getItem('username');
+                this.isOwnProfile = params['username'] == LocalStorageManager.getUsername();
             }, () => {
                 this.isLoading = false;
             })

@@ -7,6 +7,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {PopupInfoComponent, PopupInfoData} from "../../../components/popup-info/popup-info.component";
 import {Router} from "@angular/router";
 import {Role} from "../../../api/dataclasses/Role";
+import {LocalStorageManager} from "../../../helper/LocalStorageManager";
 
 @Component({
     selector: 'app-home-page-header',
@@ -14,7 +15,7 @@ import {Role} from "../../../api/dataclasses/Role";
     styleUrls: ['./home-page-header.component.scss']
 })
 export class HomePageHeaderComponent implements OnInit {
-    isLoggedIn = localStorage.getItem("token") != null;
+    isLoggedIn = LocalStorageManager.isLoggedIn();
     profileImage = "";
     username = ""
     isImageLoaded = false;
@@ -51,7 +52,7 @@ export class HomePageHeaderComponent implements OnInit {
     }
 
     checkForLogin() {
-        let token = localStorage.getItem("token")
+        let token = LocalStorageManager.getToken();
         if (token != null && token.length > 0) {
             this.apiService.getOwnProfile().subscribe(response => {
                 this.setLoggedIn(response.username)
