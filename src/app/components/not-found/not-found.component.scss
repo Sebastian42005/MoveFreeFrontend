@@ -1,0 +1,19 @@
+.not-found-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .not-found-image {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+
+  h1 {
+    font-size: 3.2vw;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}

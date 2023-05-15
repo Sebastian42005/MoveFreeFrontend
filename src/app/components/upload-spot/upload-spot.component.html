@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="image-div">
+        <div *ngIf="pickedImages.length > 0" class="image">
+            <mat-icon (click)="showPreviousImage()">arrow_back_ios</mat-icon>
+            <div *ngIf="pickedImages.length < 10 && pickedImages.length === selectedImageIndex" class="add-image-div">
+                <label for="add-image">
+                    <mat-icon>add</mat-icon>
+                </label>
+                <input id="add-image" (change)="onFileSelected($event)" [hidden]="true" type="file"
+                       accept="image/png, image/jpeg, image/webp" multiple>
+            </div>
+            <div *ngIf="selectedImageIndex < pickedImages.length" class="picked-image-div">
+                <img [src]="pickedImageUrls[selectedImageIndex]" alt="spot">
+                <div>
+                    <p>{{selectedImageIndex + 1}}/{{pickedImageUrls.length}}</p>
+                </div>
+                <mat-icon class="delete-image" (click)="deleteCurrentImage()">delete</mat-icon>
+            </div>
+            <mat-icon (click)="showNextImage()">arrow_forward_ios</mat-icon>
+        </div>
+        <div *ngIf="pickedImages.length === 0" class="no-image">
+            <div class="empty-img-div">
+                <label class="pick-image-label" for="pick-image">Upload Images</label>
+                <input id="pick-image" (change)="onFileSelected($event)" [hidden]="true" type="file"
+                       accept="image/png, image/jpeg, image/webp" multiple>
+            </div>
+        </div>
+    </div>
+    <div class="input-fields-div">
+        <app-select placeholder="Pick a spot type"
+                    [options]="spotTypes"
+                    [selectedOptions]="selectedSpotTypes"></app-select>
+        <div class="description-input-div">
+            <app-input-validator placeholder="Description"
+                                 [maxCharLength]=255
+                                 [required]=true
+                                 [(text)]="description"></app-input-validator>
+        </div>
+    </div>
+    <app-button (click)="uploadSpot()" class="upload-spot-button" text="Upload"></app-button>
+</div>

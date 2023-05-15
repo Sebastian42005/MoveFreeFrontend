@@ -1,0 +1,35 @@
+<div class="container" *ngIf="user">
+    <div class="header">
+        <app-profile-picture [borderSize]="scrWidth > 1200 ? '0.3vw' : '3px'"
+                             [size]="scrWidth > 1500 ? scrWidth > 2000 ? '5vw': '6vw' : '100px'"
+                             [profileImage]="profileImg"></app-profile-picture>
+        <div class="user-info-div">
+            <h1>{{user.username}}</h1>
+            <p>{{user.description}}</p>
+        </div>
+        <app-infos [infos]="infos"></app-infos>
+    </div>
+    <div class="line"></div>
+    <div class="navigation">
+        <div>
+            <div (click)="changeNavigation('spots')">
+                <h1>Spots</h1>
+            </div>
+            <div (click)="changeNavigation('savedSpots')">
+                <h1>Saved Spots</h1>
+            </div>
+        </div>
+        <div class="picked-navigation-line" [@navigationAnimation]="navigation"></div>
+    </div>
+    <div class="body">
+        <div class="spots" [hidden]="navigation === 'savedSpots'">
+            <app-user-spot-list [username]="user.username"></app-user-spot-list>
+        </div>
+        <div class="savedSpots" [hidden]="navigation === 'spots'">
+
+        </div>
+        <button *ngIf="navigation == 'spots'" (click)="openUploadSpotDialog()" class="upload-spot-button" mat-fab matTooltip="Upload Spot" color="primary">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<body>
+<div class="header">
+    <app-infos [infos]="infos"></app-infos>
+    <div class="profile-overview-div">
+        <div class="line-div">
+            <div class="follow-user-div">
+                <h1>{{user.username}}</h1>
+                <button>{{user.isFollowed ? 'Unfollow' : 'Follow'}}</button>
+            </div>
+            <div class="line-wrapper">
+                <div class="line"></div>
+            </div>
+            <p>{{user.description}}</p>
+        </div>
+        <app-profile-picture [borderSize]="scrWidth > 1200 ? '0.3vw' : '3px'" [size]="scrWidth > 1200 ? '6.2vw' : '100px'" [profileImage]="profileImg"></app-profile-picture>
+    </div>
+</div>
+<app-user-spot-list [username]="user.username"></app-user-spot-list>
+</body>

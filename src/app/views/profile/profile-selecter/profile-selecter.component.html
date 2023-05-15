@@ -1,0 +1,8 @@
+<div *ngIf="!isLoading">
+    <app-own-profile *ngIf="isOwnProfile && user" [user]="user"></app-own-profile>
+    <app-user-profile *ngIf="!isOwnProfile && user" [user]="user"></app-user-profile>
+    <app-not-found *ngIf="!user" message="User not found"></app-not-found>
+</div>
+<div *ngIf="isLoading" class="loading-div">
+    <app-loading></app-loading>
+</div>

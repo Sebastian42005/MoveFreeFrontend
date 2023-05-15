@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="item" *ngFor="let info of infos">
+        <img class="icon" [src]="info.image" alt="Icon">
+        <p class="title">{{info.title}}</p>
+        <p class="value">{{info.value}}</p>
+    </div>
+</div>

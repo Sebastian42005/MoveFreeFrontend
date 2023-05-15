@@ -1,0 +1,12 @@
+.profile-pic {
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.profile-pic-placeholder {
+  border-radius: 50%;
+  background: gray;
+}

@@ -1,0 +1,56 @@
+.left-to-right-button {
+  padding: 1em 2em;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  outline: 2px solid var(--primary-color);
+}
+
+.left-to-right-button-disabled {
+  padding: 1em 2em;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(128, 128, 128, 0.7);
+  transition: all 0.3s;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid rgba(128, 128, 128, 0.68);
+}
+
+.left-to-right-button:hover {
+  color: var(--background-color);
+  transform: scale(1);
+  outline: 2px solid var(--primary-color2);
+  box-shadow: 4px 5px 17px -4px var(--primary-color2);
+}
+
+.left-to-right-button::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--primary-color2);
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.left-to-right-button:hover::before {
+  width: 250%;
+}

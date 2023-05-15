@@ -1,0 +1,17 @@
+<div class="body">
+    <div class="grid">
+        <div (click)="showSpot(spot.spot.id)" class="grid-item" *ngFor="let spot of spots">
+            <div class="spots-div">
+                <div class="wrapper">
+                    <img class="spot-img" src="{{getSpotImage(spot)}}" alt="image">
+                </div>
+                <h3>{{spot.spot.description}}</h3>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showLoadNewSpots && spots.length > 0" class="load-new-div">
+        <button (click)="loadMoreSpots()" mat-fab color="primary">
+            <mat-icon>autorenew</mat-icon>
+        </button>
+    </div>
+</div>

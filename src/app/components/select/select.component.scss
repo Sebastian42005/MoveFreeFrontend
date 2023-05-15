@@ -1,0 +1,70 @@
+* {
+  color: black;
+}
+
+.custom-select {
+  width: 99%;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 2px;
+
+  .selected-option {
+    height: 30px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .arrow-icon {
+      border: solid #333;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 2px;
+      transform: rotate(45deg);
+      margin-left: 5px;
+    }
+  }
+
+  .selected-option.not-picked {
+    color: #888;
+  }
+
+  .options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    max-height: 135px;
+    overflow-y: auto;
+
+    .option {
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      cursor: pointer;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          height: 25px;
+        }
+      }
+
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+}
