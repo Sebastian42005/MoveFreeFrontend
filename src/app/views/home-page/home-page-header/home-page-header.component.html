@@ -11,6 +11,9 @@
       <p class="login-p" (click)="openLoginDialog()">Login</p>
       <p class="register-p" (click)="openRegisterDialog()">Register</p>
     </div>
-    <app-profile-picture routerLink="profile/{{username}}" *ngIf="isLoggedIn" [profileImage]="profileImage"></app-profile-picture>
+    <app-profile-picture *ngIf="isLoggedIn"
+                         [isLoggedIn]="isLoggedIn"
+                         size="60px"
+                         [username]="username"></app-profile-picture>
   </div>
 </div>

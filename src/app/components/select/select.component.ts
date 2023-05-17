@@ -1,18 +1,20 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {ApiService} from "../../api/api.service";
 
 @Component({
     selector: 'app-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss']
 })
-export class SelectComponent {
-    @Input() options: string[] = [];
+export class SelectComponent implements OnInit{
+    options: string[] = [];
     @Input() placeholder = '';
     @Output() selectedOptionChange: EventEmitter<string> = new EventEmitter<string>();
     @Input() selectedOptions: string[] = [];
     isOpen = false;
 
-    constructor(private elementRef: ElementRef) {}
+    constructor(private elementRef: ElementRef,
+                private apiService: ApiService) {}
 
 
     onSelectOption(option: string) {
@@ -34,4 +36,14 @@ export class SelectComponent {
             this.isOpen = false;
         }
     }
+
+  ngOnInit(): void {
+      this.getSpotTypes();
+  }
+
+  getSpotTypes() {
+    this.apiService.getSpotTypes().subscribe(spotTypes => {
+      this.options = spotTypes.map(spotType => spotType.name);
+    });
+  }
 }

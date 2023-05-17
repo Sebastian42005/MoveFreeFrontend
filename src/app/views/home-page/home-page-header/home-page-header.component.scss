@@ -12,23 +12,6 @@
     align-items: center;
   }
 
-  p:hover {
-    transform: scale(1.04);
-  }
-
-  p {
-    font-size: 24px;
-    cursor: pointer;
-    transition: 0.1s;
-  }
-
-  .register-p {
-    border: 3px solid var(--accent);
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin-left: 5px;
-  }
-
   .title {
     font-size: 2.8vw;
   }
@@ -41,10 +24,28 @@
     flex: 1;
   }
 
+  p:hover {
+    transform: scale(1.04);
+  }
+
+  p {
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.1s;
+  }
+
   .login-div {
     display: flex;
     justify-content: end;
     margin-right: 20px;
+
+
+    .register-p {
+      border: 3px solid var(--accent);
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-left: 5px;
+    }
 
     img, div {
       margin-right: 20px;

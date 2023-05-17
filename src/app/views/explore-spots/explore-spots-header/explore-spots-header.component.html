@@ -1,15 +1,15 @@
 <div class="header">
     <div class="search-spot-wrapper">
-        <form class="form">
-            <button [disabled]="isLoading" (click)="searchSpot()">
-                <mat-icon>search</mat-icon>
-            </button>
-            <input [disabled]="isLoading" name="search" class="input" placeholder="Search Spot" type="text" [(ngModel)]="search">
-            <button [disabled]="isLoading" [@scaleAnimation]="search.length > 0 ? 'show' : 'hide'" (click)="search = ''">
-                <mat-icon>close</mat-icon>
-            </button>
-        </form>
+        <app-search [isLoading]="isLoading"></app-search>
     </div>
     <h1 routerLink="" class="title">Move Free</h1>
-    <app-profile-picture [routerLink]="'../profile/' + username" [profileImage]="profileImg"></app-profile-picture>
+  <div *ngIf="!isLoading" class="login-div">
+    <div *ngIf="!isLoggedIn">
+      <p class="login-p" (click)="openLoginDialog()">Login</p>
+      <p class="register-p" (click)="openRegisterDialog()">Register</p>
+    </div>
+    <app-profile-picture *ngIf="isLoggedIn"
+                         [isLoggedIn]="isLoggedIn"
+                         [username]="username"></app-profile-picture>
+  </div>
 </div>

@@ -45,6 +45,10 @@ import {MatSelectModule} from "@angular/material/select";
 import {SelectComponent} from './components/select/select.component';
 import {AdminComponent} from './views/admin/admin.component';
 import {SpotComponent} from './views/spot/spot.component';
+import { HomePageSubMenuComponent } from './views/home-page/home-page-sub-menu/home-page-sub-menu.component';
+import { SubMenuItemComponent } from './views/home-page/home-page-sub-menu/sub-menu-item/sub-menu-item.component';
+import { SingleSelectComponent } from './components/single-select/single-select.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -85,6 +89,10 @@ const routes: Routes = [
         SelectComponent,
         AdminComponent,
         SpotComponent,
+        HomePageSubMenuComponent,
+        SubMenuItemComponent,
+        SingleSelectComponent,
+        SearchComponent,
     ],
     imports: [
         MatButtonToggleModule,

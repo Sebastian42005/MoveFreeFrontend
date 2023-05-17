@@ -1,0 +1,15 @@
+<div class="custom-select">
+  <div [ngClass]="'selected-option' + (selectedOption != '' ? '' : ' not-picked')" (click)="isOpen = !isOpen">
+    {{ selectedOption.length > 0 ? selectedOption : placeholder }}
+    <i class="arrow-icon"></i>
+  </div>
+  <div class="options" [hidden]="!isOpen">
+    <div class="option" *ngFor="let option of options" (click)="onSelectOption(option.text)">
+      <div>
+        <img [src]="option.image" alt="Spot Type Image">
+        <p>{{ option.text }}</p>
+      </div>
+      <mat-icon *ngIf="selectedOption === option.text">check</mat-icon>
+    </div>
+  </div>
+</div>

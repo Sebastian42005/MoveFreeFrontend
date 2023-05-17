@@ -1,0 +1,44 @@
+$mat-icon-size: 2.3vh;
+
+.sub-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 1.2vh;
+
+  .sub-card-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4vh;
+    width: 4vh;
+    background-color: lightgray;
+    border-radius: 50%;
+
+    mat-icon {
+      font-size: $mat-icon-size;
+      height: $mat-icon-size;
+      width: $mat-icon-size;
+      color: #656565;
+    }
+
+  }
+
+  span {
+    font-size: 1.1rem;
+  }
+
+}
+
+.sub-card:hover {
+  background-color: rgba(232, 232, 232, 0.18);
+}

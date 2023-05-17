@@ -1,40 +1,68 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
-import {scaleAnimation} from "../../../animations/animations";
-import {ActivatedRoute} from "@angular/router";
+import {Component, Input, OnInit} from '@angular/core';
 import {LocalStorageManager} from "../../../helper/LocalStorageManager";
+import {ApiService} from "../../../api/api.service";
+import {RegisterComponent} from "../../../components/login/register/register.component";
+import {LoginComponent, loginEmitter} from "../../../components/login/login/login.component";
+import {MatDialog} from "@angular/material/dialog";
+import {Role} from "../../../api/dataclasses/Role";
+import {logoutEmitter} from "../../home-page/home-page-sub-menu/home-page-sub-menu.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-explore-spots-header',
   templateUrl: './explore-spots-header.component.html',
-  styleUrls: ['./explore-spots-header.component.scss'],
-  animations: [scaleAnimation]
+  styleUrls: ['./explore-spots-header.component.scss']
 })
 export class ExploreSpotsHeaderComponent implements OnInit{
   @Input() isLoading = true;
-  @Input() profileImg = "assets/images/profile.png";
-  search = ""
-  isImageLoaded = false;
-  username = LocalStorageManager
+  isLoggedIn = false
+  username = ""
 
-  constructor(private router: ActivatedRoute) {
-
+  constructor(private apiService: ApiService,
+              private matDialog: MatDialog,
+              private router: Router) {
   }
 
-
-  searchSpot() {
-    searchEmitter.emit(this.search);
+  openRegisterDialog() {
+    this.matDialog.open(RegisterComponent);
   }
 
-  getBackgroundImage() {
-    return `background-image: url(${this.profileImg})`
+  openLoginDialog() {
+    this.matDialog.open(LoginComponent);
   }
 
   ngOnInit(): void {
-    this.router.queryParams.subscribe(params => {
-        this.search = params['search'] || "";
-        searchEmitter.emit(this.search)
+    this.checkForLogin();
+    this.checkForLogout();
+  }
+
+  checkForLogin() {
+    let token = LocalStorageManager.getToken();
+    if (token != null && token.length > 0) {
+      this.apiService.getOwnProfile().subscribe(response => {
+        this.setLoggedIn(response.username);
+      }, () => {
+        LocalStorageManager.removeTokenAndUsername();
+        this.isLoggedIn = false;
+      });
+    }
+    loginEmitter.subscribe(userRole => {
+      this.setLoggedIn(userRole.username)
+      if (userRole.role === Role.ADMIN) {
+        this.router.navigate(["admin"]).then(() => {
+        })
+      }
     })
   }
-}
 
-export const searchEmitter = new EventEmitter<string>();
+  checkForLogout() {
+    logoutEmitter.subscribe(() => {
+      this.isLoggedIn = false;
+    })
+  }
+
+  setLoggedIn(username: string) {
+    this.isLoggedIn = true
+    this.username = username
+  }
+}

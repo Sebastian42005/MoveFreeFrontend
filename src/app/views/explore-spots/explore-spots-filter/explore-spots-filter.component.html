@@ -5,5 +5,7 @@
     <button (click)="selectedView = 'map'" [ngClass]="selectedView === 'map' ? 'selected': ''">
         <mat-icon>map</mat-icon>
     </button>
-
+  <app-single-select placeholder="Spot Type"
+                     [options]="spotTypes"
+                     (selectedOptionChange)="selectSpotType($event)"></app-single-select>
 </div>

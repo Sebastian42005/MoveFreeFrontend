@@ -1,5 +1,5 @@
 <div *ngIf="spot && spotLoaded" class="container">
-    <gallery [items]="spotPictures" thumbPosition="bottom"></gallery>
+    <gallery [items]="spotPictures" thumbPosition="left"></gallery>
 </div>
 <app-not-found *ngIf="!spot && spotLoaded" message="Spot not found"></app-not-found>
 <div *ngIf="!spotLoaded" class="spot-loading-wrapper">

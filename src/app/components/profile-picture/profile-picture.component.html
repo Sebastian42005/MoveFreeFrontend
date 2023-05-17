@@ -1,4 +1,7 @@
-<div class="image-wrapper">
+<div class="image-wrapper" (click)="showUserSubMenu()">
     <div [ngStyle]="{'width': size, 'height': size, 'border': borderSize + ' solid white'}" class="profile-pic-placeholder" *ngIf="!isImageLoaded"></div>
     <img [ngStyle]="{'width': size, 'height': size, 'border': borderSize + ' solid white'}" class="profile-pic" [hidden]="!isImageLoaded" [src]="profileImage" (load)="isImageLoaded = true" alt="profile-pic">
 </div>
+<app-home-page-sub-menu *ngIf="isLoggedIn && username"
+                        [showSubMenu]="showSubMenu"
+                        [username]="username"></app-home-page-sub-menu>

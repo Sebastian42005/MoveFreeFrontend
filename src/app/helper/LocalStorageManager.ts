@@ -6,6 +6,7 @@ export class LocalStorageManager {
 
     public static setTokenAndUsername(token: string, username: string) {
         this.setLocalStorage("token", token);
+        this.setLocalStorage("username", username);
     }
 
     public static getToken(): string | null{
@@ -26,7 +27,7 @@ export class LocalStorageManager {
     }
 
     private static getLocalStorage(key: string): string | null{
-        return localStorage.getItem("token");
+        return localStorage.getItem(key);
     }
 
     private static removeLocalStorage(key: string) {

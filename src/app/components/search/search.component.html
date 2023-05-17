@@ -1,0 +1,9 @@
+<form class="form">
+  <button [disabled]="isLoading" (click)="searchSpot()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <input [disabled]="isLoading" name="search" class="input" placeholder="Search Spot" type="text" [(ngModel)]="search">
+  <button [disabled]="isLoading" [@scaleAnimation]="search.length > 0 ? 'show' : 'hide'" (click)="search = ''">
+    <mat-icon>close</mat-icon>
+  </button>
+</form>

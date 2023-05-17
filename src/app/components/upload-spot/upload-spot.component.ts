@@ -8,10 +8,9 @@ import {showMessageEmitter} from "../../app.component";
     templateUrl: './upload-spot.component.html',
     styleUrls: ['./upload-spot.component.scss']
 })
-export class UploadSpotComponent implements OnInit {
+export class UploadSpotComponent {
     description = '';
     selectedSpotTypes = [];
-    spotTypes: string[] = [];
     pickedImages: File[] = [];
     pickedImageUrls: string[] = [];
     selectedImageIndex = 0
@@ -69,16 +68,6 @@ export class UploadSpotComponent implements OnInit {
                 this.selectedImageIndex = this.pickedImageUrls.length
             }
         }
-    }
-
-    ngOnInit(): void {
-        this.getSpotTypes();
-    }
-
-    getSpotTypes() {
-        this.apiService.getSpotTypes().subscribe(spotTypes => {
-            this.spotTypes = spotTypes.map(spotType => spotType.name)
-        });
     }
 
     isUploading = false;
