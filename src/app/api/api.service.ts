@@ -6,6 +6,7 @@ import {LoginResponse} from "./dataclasses/LoginResponse";
 import {User} from "./dataclasses/User";
 import {SpotType} from "./dataclasses/SpotType";
 import {LocalStorageManager} from "../helper/LocalStorageManager";
+import {Rating} from "./dataclasses/Rating";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,16 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getAllSpots(spotType: string, search?: string, alreadySeenList?: string[], limit?: number): Observable<Spot[]> {
+  getSpotRating(spotId: string): Observable<Rating[]> {
+    return this.get(`/spot/${spotId}/ratings`)
+  }
+
+  rateSpot(spotId: string, message: string, stars: number): Observable<Rating> {
+    let body = {message: message, stars: stars}
+    return this.put(`/spot/${spotId}/rate`, body)
+  }
+
+  getAllSpots(spotType: string, search?: string, alreadySeenList?: string[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
     spotType = spotType ? spotType : ""
     search = search ? search : ""
     alreadySeenList = alreadySeenList ? alreadySeenList : []
@@ -23,27 +33,49 @@ export class ApiService {
     return this.get(`/spot/all?search=${search.toString()}&limit=${limit}&spotType=${spotType}&alreadySeenList=${alreadySeenList}`)
   }
 
-  public getSpot(spotId: string): Observable<Spot> {
+  getSavedSpots(alreadySeenList?: string[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
+    alreadySeenList = alreadySeenList ? alreadySeenList : []
+    limit = limit ? limit : 5
+    return this.get(`/spot/saved?limit=${limit}&alreadySeenList=${alreadySeenList}`)
+  }
+
+  saveSpot(id: string): Observable<any> {
+    return this.put(`/spot/${id}/save`, {})
+  }
+
+  getIsSaved(id: string): Observable<any> {
+    return this.get(`/spot/${id}/isSaved`)
+  }
+
+  getTopUser(): Observable<any[]> {
+    return this.get(`/user/top`)
+  }
+
+  getSpot(spotId: string): Observable<Spot> {
     return this.get(`/spot/${spotId}`)
   }
 
-  public login(username: string, password: string): Observable<LoginResponse> {
+  login(username: string, password: string): Observable<LoginResponse> {
     LocalStorageManager.removeTokenAndUsername()
     let body = {username: username, password: password}
     return this.post("/authentication/login", body)
   }
 
-  public getSpotTypes(): Observable<SpotType[]> {
+  getSpotTypes(): Observable<SpotType[]> {
     return this.get("/spot/type")
   }
 
-  public register(username: string, email: string, password: string): Observable<User> {
+  searchUsers(search: string): Observable<string[]> {
+    return this.get(`/user/search?search=${search}&limit=5`)
+  }
+
+  register(username: string, email: string, password: string): Observable<User> {
     LocalStorageManager.removeTokenAndUsername()
     let body = {username: username, email: email, password: password}
     return this.post<User>("/authentication/register", body)
   }
 
-  public async uploadSpot(images: File[], spotTypes: string[], description: string) {
+  async uploadSpot(images: File[], spotTypes: string[], description: string) {
     const body = {
       "description": description,
       "latitude": 0.0,
@@ -77,19 +109,27 @@ export class ApiService {
     });
   }
 
-  public getOwnProfile(): Observable<User> {
+  deleteSpot(spotId: string): Observable<any> {
+    return this.delete(`/spot/${spotId}`)
+  }
+
+  getOwnProfile(): Observable<User> {
     return this.get("/user/own")
   }
 
-  public getUser(username: string): Observable<User> {
+  getOwnName(): Observable<User> {
+    return this.get("/user/own/name")
+  }
+
+  getUser(username: string): Observable<User> {
     return this.get(`/user/${username}`)
   }
 
-  public getUsername(): Observable<string> {
+  getUsername(): Observable<string> {
     return this.get("/user/own/username")
   }
 
-  public getUserSpots(username: string, alreadySeenList?: string[], limit?: number): Observable<Spot[]> {
+  getUserSpots(username: string, alreadySeenList?: string[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
     username = username ? username : ""
     alreadySeenList = alreadySeenList ? alreadySeenList : []
     limit = limit ? limit : 5

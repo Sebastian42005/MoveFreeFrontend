@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomePageSubMenuComponent } from './home-page-sub-menu.component';
+import { SubMenuComponent } from './sub-menu.component';
 
 describe('HomePageSubMenuComponent', () => {
-  let component: HomePageSubMenuComponent;
-  let fixture: ComponentFixture<HomePageSubMenuComponent>;
+  let component: SubMenuComponent;
+  let fixture: ComponentFixture<SubMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomePageSubMenuComponent ]
+      declarations: [ SubMenuComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomePageSubMenuComponent);
+    fixture = TestBed.createComponent(SubMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

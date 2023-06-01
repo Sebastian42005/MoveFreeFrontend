@@ -7,5 +7,6 @@
     </button>
   <app-single-select placeholder="Spot Type"
                      [options]="spotTypes"
+                     [selectedOption]="spotType"
                      (selectedOptionChange)="selectSpotType($event)"></app-single-select>
 </div>

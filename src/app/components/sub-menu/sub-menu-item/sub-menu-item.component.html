@@ -1,0 +1,9 @@
+<div class="sub-card">
+  <div class="sub-card-item">
+    <div [ngStyle]="{'background': color ? color : 'lightgray'}" class="icon-wrapper">
+      <mat-icon [ngStyle]="{'color': color ? 'white': '#656565'}">{{icon}}</mat-icon>
+    </div>
+    <span> {{text}} </span>
+  </div>
+  <mat-icon *ngIf="arrow">keyboard_arrow_right</mat-icon>
+</div>

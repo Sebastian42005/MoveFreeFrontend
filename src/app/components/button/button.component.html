@@ -1,1 +1,5 @@
 <button [disabled]="disabled" *ngIf="type == 0" [ngClass]="!disabled ? 'left-to-right-button' : 'left-to-right-button-disabled'">{{text}}</button>
+<button [disabled]="disabled" *ngIf="type == 1" [ngClass]="!disabled ? 'animation-button' : 'animation-button-disabled'">
+    <p>{{text}}</p>
+    <mat-icon>star_border</mat-icon>
+</button>

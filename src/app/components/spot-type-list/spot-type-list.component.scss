@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  overflow: scroll;
+  flex-direction: row;
+  gap: 15px;
+
+  .spotType {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    border: 3px solid var(--accent);
+    background: none;
+    padding: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:hover {
+
+      img {
+        left: 50%;
+        transform: translateX(-50%) scale(1.4);
+      }
+
+      p {
+        transform: translateX(150%);
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    img {
+      left: 10%;
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      filter: invert(100%);
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin: 0 0 0 33px;
+      transition: 0.4s;
+    }
+  }
+}

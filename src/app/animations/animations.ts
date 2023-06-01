@@ -16,3 +16,33 @@ export const scaleAnimation = trigger('scaleAnimation', [
         animate('0.2s')
     ])
 ]);
+
+export const changeHeightAnimation = trigger('changeHeightAnimation', [
+    state('close', style({
+        maxHeight: '0',
+    })),
+    state('open', style({
+        maxHeight: '30%',
+    })),
+    transition('open => close', [
+        animate('300ms')
+    ]),
+    transition('close => open', [
+        animate('300ms')
+    ]),
+])
+
+export const showUserListAnimation = trigger('showUserListAnimation', [
+    state('close', style({
+        height: '0',
+    })),
+    state('open', style({
+        maxHeight: '30vh',
+    })),
+    transition('open => close', [
+        animate('200ms')
+    ]),
+    transition('close => open', [
+        animate('200ms')
+    ]),
+])

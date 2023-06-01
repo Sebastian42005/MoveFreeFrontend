@@ -10,7 +10,8 @@ export class InputValidatorComponent {
   @Input() type: string = 'text';
   @Input() maxCharLength: number = 255;
   @Input() hasMaxCharLength: boolean = true;
-
+  @Input() autocomplete: string = '';
+  @Input() isTextArea: boolean = false;
   @Input() placeholder: string = '';
   @Input() required: boolean = false;
   @Input() text: any;

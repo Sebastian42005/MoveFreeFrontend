@@ -1,0 +1,16 @@
+.spot-option-div {
+  position: relative;
+
+  .spot-option-button {
+    cursor: pointer;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .spot-option-menu {
+    position: absolute;
+    top: 35px;
+    right: 28px;
+  }
+}

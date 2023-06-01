@@ -2,13 +2,17 @@
     <div class="profile-overview-div" style="flex: 1">
         <div class="line-div">
             <div class="follow-user-div">
+                <div class="profile-pic-placeholder"></div>
                 <h1>{{user.username}}</h1>
                 <button>{{user.isFollowed ? 'Unfollow' : 'Follow'}}</button>
             </div>
             <div class="line-wrapper">
                 <div class="line"></div>
             </div>
-            <p>{{user.description}}</p>
+            <div class="description-div">
+                <div class="profile-pic-placeholder"></div>
+                <p>{{user.description}}</p>
+            </div>
         </div>
     </div>
   <app-infos [infos]="infos"></app-infos>

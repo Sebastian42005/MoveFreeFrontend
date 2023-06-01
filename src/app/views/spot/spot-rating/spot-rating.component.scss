@@ -1,0 +1,46 @@
+.container {
+  margin: 15px;
+
+  .horizontal-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+  }
+
+  .rating-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    margin-top: 10px;
+
+    .rating {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      .rating-container-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .rating-top-div {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+
+          h1 {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}

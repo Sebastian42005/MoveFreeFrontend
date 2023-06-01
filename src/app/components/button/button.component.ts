@@ -26,5 +26,6 @@ export class ButtonComponent implements OnInit{
 }
 
 export enum ButtonType {
-    LEFT_TO_RIGHT
+    LEFT_TO_RIGHT,
+    ANIMATION
 }

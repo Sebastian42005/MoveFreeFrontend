@@ -1,0 +1,6 @@
+<div class="container">
+    <button *ngFor="let spotType of spotTypes" class="spotType" (click)="filterSpotsByType(spotType)">
+        <img [src]="getSpotTypeIcon(spotType)" alt="{{spotType}}">
+        <p>{{spotType}}</p>
+    </button>
+</div>

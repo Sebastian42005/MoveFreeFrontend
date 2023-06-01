@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="horizontal-div">
+        <app-stars [rating]="spot.rating" starSize="45px" gap="0px"></app-stars>
+        <app-button [type]="buttonType" text="Rate" (click)="openRateSpotDialog()"></app-button>
+    </div>
+    <div class="rating-list">
+        <div class="rating" *ngFor="let rating of ratings">
+            <app-profile-picture size="50px" [username]="rating.username"></app-profile-picture>
+            <div class="rating-container-div">
+                <div class="rating-top-div">
+                    <h1>{{rating.username}}</h1>
+                    <app-stars [rating]="rating.stars" starSize="30px"></app-stars>
+                </div>
+                <p>{{rating.message}}</p>
+            </div>
+        </div>
+    </div>
+</div>

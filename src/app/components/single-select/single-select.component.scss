@@ -40,7 +40,8 @@
     left: 0;
     right: 0;
     z-index: 1;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
+    border-top: none;
     background-color: var(--primary);
     max-height: 100vh;
     overflow-y: auto;
@@ -61,12 +62,12 @@
 
         img {
           height: 25px;
-          filter: invert(95%);
+          filter: invert(100%);
         }
       }
 
       &:hover {
-        background-color: #003772;
+        background-color: #002e57;
       }
     }
   }

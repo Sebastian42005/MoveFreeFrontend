@@ -1,0 +1,10 @@
+.star-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  mat-icon {
+    cursor: pointer;
+    color: var(--accent);
+  }
+}

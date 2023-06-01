@@ -8,4 +8,6 @@ import {Component, Input} from '@angular/core';
 export class SubMenuItemComponent {
   @Input() icon = ""
   @Input() text = ""
+  @Input() color: string | undefined = undefined
+  @Input() arrow = true;
 }

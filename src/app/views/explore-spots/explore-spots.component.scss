@@ -1,5 +1,10 @@
+app-explore-spots-header {
+  z-index: 2;
+}
+
 .body {
   height: 90vh;
+  z-index: 1;
 
   mat-grid-list {
     width: 100vw;

@@ -54,3 +54,84 @@
 .left-to-right-button:hover::before {
   width: 250%;
 }
+
+.animation-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+  background: none;
+  padding: 12px;
+  width: 122px;
+  height: 50px;
+  font-size: 1.3rem;
+  transition: 0.1s;
+  overflow: hidden;
+
+  mat-icon {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    right: 10%;
+    transition: 0.5s;
+  }
+
+  p {
+    margin: 0 0 0 10%;
+    transition: 0.4s;
+  }
+
+  &:hover {
+
+    mat-icon {
+      right: 50%;
+      transform: translateX(50%) rotate(145deg) scale(1.3);
+    }
+
+    p {
+      transform: translateX(-180%);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.animation-button-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  border: 3px solid gray;
+  border-radius: 10px;
+  background: none;
+  padding: 12px;
+  width: 122px;
+  height: 50px;
+  font-size: 1.3rem;
+  transition: 0.1s;
+  overflow: hidden;
+
+
+  mat-icon {
+    color: gray;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    right: 10%;
+    transition: 0.5s;
+  }
+
+  p {
+    color: gray;
+    margin: 0 0 0 10%;
+    transition: 0.4s;
+  }
+
+}

@@ -20,7 +20,6 @@ export class UserProfileComponent implements OnInit {
         follows: 0
     };
     profileImg = "";
-
     scrWidth: any;
 
     @HostListener('window:resize', ['$event'])
@@ -47,11 +46,6 @@ export class UserProfileComponent implements OnInit {
             title: "Spots",
             value: this.user.spotsAmount.toString(),
             image: "assets/images/spot.png"
-        },
-        {
-            title: "Spot Rating",
-            value: this.user.averageRating.toString(),
-            image: "assets/images/star.png"
         }
     ]
 

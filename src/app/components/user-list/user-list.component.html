@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="user-list"
+         [@showUserListAnimation]="showUserList ? 'open' : 'close'">
+        <div class="user" *ngFor="let user of users" (click)="displayUser()">
+            <app-profile-picture size="35px" [username]="user"></app-profile-picture>
+            <h2>{{user}}</h2>
+        </div>
+    </div>
+</div>

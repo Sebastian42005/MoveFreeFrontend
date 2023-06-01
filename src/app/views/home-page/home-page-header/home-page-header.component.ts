@@ -8,7 +8,7 @@ import {PopupInfoComponent, PopupInfoData} from "../../../components/popup-info/
 import {Router} from "@angular/router";
 import {Role} from "../../../api/dataclasses/Role";
 import {LocalStorageManager} from "../../../helper/LocalStorageManager";
-import {logoutEmitter} from "../home-page-sub-menu/home-page-sub-menu.component";
+import {logoutEmitter} from "../../../components/sub-menu/sub-menu.component";
 
 @Component({
   selector: 'app-home-page-header',
@@ -52,7 +52,7 @@ export class HomePageHeaderComponent implements OnInit {
   checkForLogin() {
     let token = LocalStorageManager.getToken();
     if (token != null && token.length > 0) {
-      this.apiService.getOwnProfile().subscribe(response => {
+      this.apiService.getOwnName().subscribe(response => {
         this.setLoggedIn(response.username);
       }, () => {
         LocalStorageManager.removeTokenAndUsername();

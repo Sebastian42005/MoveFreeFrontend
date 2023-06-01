@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ApiService, getSpotTypeImage} from "../../../api/api.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-explore-spots-filter',
@@ -9,6 +10,7 @@ import {ApiService, getSpotTypeImage} from "../../../api/api.service";
 export class ExploreSpotsFilterComponent implements OnInit{
   selectedView = "list";
   spotTypes: any[] = [];
+  @Input() spotType = "";
   @Output() onSpotTypeSelected = new EventEmitter<string>();
 
   constructor(private apiService: ApiService) {

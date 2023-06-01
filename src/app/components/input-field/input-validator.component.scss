@@ -8,16 +8,27 @@ div {
   input {
     width: 95%;
     height: 30px;
-    border-radius: 5px;
     margin-left: 0.7vh;
     margin-bottom: 0.2vh;
     padding: 5px 0 5px 17px;
-    font-size: 17px;
-    border:2px solid #737373;
-    color: black;
   }
 
-  input:focus {
+  textarea {
+    padding: 8px;
+    resize: none;
+    word-break: break-word;
+    height: 20vh;
+    width: 20vw;
+  }
+
+  .input-field {
+    border-radius: 5px;
+    color: black;
+    font-size: 1.1rem;
+    border:2px solid #737373;
+  }
+
+  .input-field:focus {
     outline: none !important;
     border: 3px solid var(--accent);
   }

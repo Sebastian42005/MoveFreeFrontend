@@ -26,7 +26,6 @@ import {UploadSpotComponent} from "../../../components/upload-spot/upload-spot.c
 export class OwnProfileComponent implements OnInit {
     navigation = "spots"
     profileImg = "";
-
     @Input() user: User = {
         username: "",
         description: "",
@@ -36,31 +35,9 @@ export class OwnProfileComponent implements OnInit {
         follower: 0,
         follows: 0,
     };
-
-    infos = [
-        {
-            title: "Follower",
-            value: this.user.follower.toString(),
-            image: "assets/images/follower.png"
-        },
-        {
-            title: "Follows",
-            value: this.user.follows.toString(),
-            image: "assets/images/follows.png"
-        },
-        {
-            title: "Spots",
-            value: this.user.spotsAmount.toString(),
-            image: "assets/images/spot.png"
-        },
-        {
-            title: "Spot Rating",
-            value: this.user.averageRating.toString(),
-            image: "assets/images/star.png"
-        }
-    ]
-
+    infos: any[] = []
     scrWidth: any;
+
     @HostListener('window:resize', ['$event'])
     getScreenSize() {
         this.scrWidth = window.innerWidth;
@@ -76,6 +53,27 @@ export class OwnProfileComponent implements OnInit {
 
     ngOnInit(): void {
         this.profileImg = getUserProfileImage(this.user.username);
+        this.setInfos();
+    }
+
+    setInfos() {
+        this.infos = [
+            {
+                title: "Follower",
+                value: this.user.follower.toString(),
+                image: "assets/images/follower.png"
+            },
+            {
+                title: "Follows",
+                value: this.user.follows.toString(),
+                image: "assets/images/follows.png"
+            },
+            {
+                title: "Spots",
+                value: this.user.spotsAmount.toString(),
+                image: "assets/images/spot.png"
+            }
+        ]
     }
 
     changeNavigation(navigation: string) {

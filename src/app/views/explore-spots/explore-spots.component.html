@@ -1,17 +1,20 @@
-<app-explore-spots-header [isLoading]="!isSpotsLoaded"></app-explore-spots-header>
+<app-explore-spots-header [isLoading]="!isSpotsLoaded"
+                          [search]="search"></app-explore-spots-header>
 <div class="body">
-    <app-explore-spots-filter (onSpotTypeSelected)="filterSpots($event)"></app-explore-spots-filter>
+    <app-explore-spots-filter (onSpotTypeSelected)="filterSpots($event)"
+                              [spotType]="selectedSpotType"></app-explore-spots-filter>
     <div *ngIf="!isSpotsLoaded" class="loading-div">
         <app-loading></app-loading>
     </div>
-    <app-not-found *ngIf="spots.length <= 0 && isSpotsLoaded" width="100%" height="79%" message="No spots found"></app-not-found>
+    <app-not-found *ngIf="spots.length <= 0 && isSpotsLoaded" width="100%" height="79%"
+                   message="No spots found"></app-not-found>
     <mat-grid-list *ngIf="isSpotsLoaded" cols="10" rowHeight="10vh">
         <mat-grid-tile
                 *ngFor="let spot of spots; index as i"
                 [colspan]="spot.col"
                 [rowspan]="spot.row"
                 [@fadeIn]="i"
-        routerLink="/spot/{{spot.spot.id}}">
+                routerLink="/spot/{{spot.spot.id}}">
             <div class="spots-div">
                 <div class="wrapper">
                     <img src="{{spot.imageUrl}}" alt="image">

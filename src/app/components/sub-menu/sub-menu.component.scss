@@ -1,9 +1,8 @@
 .menu {
   width: 300px;
   position: fixed;
-  top: 10vh;
-  right: 50px;
-  overflow: hidden;
+  overflow: scroll;
+  height: auto;
   background-color: var(--primary);
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   z-index: 1000;
@@ -16,6 +15,11 @@
     width: 100%;
     justify-content: center;
     gap: 15px;
+    transition: 200ms;
+
+    &:hover {
+      transform: scale(1.05);
+    }
 
     p {
       font-size: 1.3rem;

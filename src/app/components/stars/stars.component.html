@@ -1,0 +1,8 @@
+<div [ngStyle]="{'gap': gap}" class="star-div">
+    <div *ngFor="let index of starList">
+        <mat-icon *ngIf="index < rating"
+             [ngStyle]="{'width': starSize, 'height': starSize, 'font-size': starSize}">star</mat-icon>
+        <mat-icon *ngIf="index >= rating"
+             [ngStyle]="{'width': starSize, 'height': starSize, 'font-size': starSize}">star_border</mat-icon>
+    </div>
+</div>

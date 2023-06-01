@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService, getSpotImage} from "../../api/api.service";
 import {Spot} from "../../api/dataclasses/Spot";
 import {isUploadFinishedEventEmitter} from "../upload-spot/upload-spot.component";
@@ -23,91 +23,68 @@ import {Router} from "@angular/router";
   ]
 })
 export class UserSpotListComponent implements OnInit {
-  @ViewChild('imgElement', {static: false}) imgElement: ElementRef | undefined;
   showLoadNewSpots = false;
   @Input() username = "";
-  emptySpot: Spot = {
-    id: '',
-    description: '',
-    location: {
-      id: '',
-      latitude: 0,
-      longitude: 0,
-      city: ''
-    },
-    spotType: [],
-    user: '',
-    pictures: []
-  };
+  @Input() savedSpots = false;
+  spots: Spot[] = [];
+  spotsSaved: Spot[] = [];
+  SPOT_LIMIT = 6;
 
-  spots = [{
-    "spot": this.emptySpot,
-    "currentImageIndex": 0
-  }];
-
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private apiService: ApiService) {
   }
 
   ngOnInit(): void {
     this.getUserSpots();
     this.isUploadFinished();
-    this.changeCurrentImage();
-  }
-
-  changeCurrentImage() {
-    setInterval(() => {
-      this.spots.forEach(spot => {
-        if (spot.currentImageIndex < spot.spot.pictures.length - 1) {
-          spot.currentImageIndex++;
-        } else {
-          spot.currentImageIndex = 0;
-        }
-      })
-    }, 9000);
-  }
-
-  showSpot(spotId: string) {
-    this.router.navigate(["spot/" + spotId]).then(() => {
-    });
   }
 
   isUploadFinished() {
     isUploadFinishedEventEmitter.subscribe(spot => {
-      this.spots.unshift({
-        "spot": spot,
-        "currentImageIndex": 0
-      })
+      this.spots.push(spot);
     });
   }
 
   getUserSpots() {
     this.showLoadNewSpots = false;
-    this.apiService.getUserSpots(this.username, [], 6).subscribe(spots => {
-      this.spots = spots.map(spot => this.spotToSpotWithImageIndex(spot));
-      if (spots.length == 6) {
-        this.showLoadNewSpots = true;
-      }
-    })
+    if (this.savedSpots) {
+      this.apiService.getSavedSpots( [], this.SPOT_LIMIT).subscribe(spots => {
+        this.setSpots(spots);
+      })
+    }else {
+      this.apiService.getUserSpots(this.username, [], this.SPOT_LIMIT).subscribe(spots => {
+        this.setSpots(spots);
+      })
+    }
   }
 
   loadMoreSpots() {
     this.showLoadNewSpots = false;
-    this.apiService.getUserSpots(this.username, this.spots.map(spot => spot.spot.id), 6).subscribe(spots => {
-      this.spots.push(...spots.map(spot => this.spotToSpotWithImageIndex(spot)));
-      if (spots.length == 6) {
-        this.showLoadNewSpots = true;
-      }
-    })
+    if (this.savedSpots) {
+        this.apiService.getSavedSpots(this.spotsSaved.map(spot => spot.id), this.SPOT_LIMIT).subscribe(spots => {
+            this.addSpots(spots);
+        })
+    }else {
+      this.apiService.getUserSpots(this.username, this.spots.map(spot => spot.id), this.SPOT_LIMIT).subscribe(spots => {
+        this.addSpots(spots);
+      })
+    }
   }
 
-  getSpotImage(spot: any) {
-    return getSpotImage(spot.spot.pictures[spot.currentImageIndex]);
+  getSpotImage(spot: Spot) {
+    return getSpotImage(spot.pictures[0]);
   }
 
-  spotToSpotWithImageIndex(spot: Spot): any {
-    return {
-      "spot": spot,
-      "currentImageIndex": 0
-    };
+  private addSpots(spots: {hasMore: boolean, spots: Spot[]}) {
+    this.spots.push(...spots.spots);
+    if (spots.hasMore) {
+      this.showLoadNewSpots = true;
+    }
+  }
+
+  private setSpots(spots: {hasMore: boolean, spots: Spot[]}) {
+    this.spots = spots.spots;
+    if (spots.hasMore) {
+      this.showLoadNewSpots = true;
+    }
   }
 }

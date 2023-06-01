@@ -1,0 +1,12 @@
+<div class="star-div">
+    <div (click)="rateSpot(index + 1)"
+         (mouseenter)="starEnter(index)"
+         (mouseleave)="starLeave()"
+         *ngFor="let index of starList"
+         [ngStyle]="{'padding-left': gap, 'padding-right': gap}">
+        <mat-icon *ngIf="getShowStar(index)"
+             [ngStyle]="{'width': starSize, 'height': starSize, 'font-size': starSize}">star</mat-icon>
+        <mat-icon *ngIf="!getShowStar(index)"
+             [ngStyle]="{'width': starSize, 'height': starSize, 'font-size': starSize}">star_border</mat-icon>
+    </div>
+</div>

@@ -1,11 +1,24 @@
 <div>
-  <input [type]="type"
-             [maxLength]="maxCharLength"
-             [placeholder]="!required ? placeholder : placeholder + '*'"
-             [required]="required"
-             [ngModel]="text"
-             (ngModelChange)="changeText($event)">
-      <div *ngIf="hasMaxCharLength" class="footer">
-            <span> {{getTextLength()}}/{{maxCharLength}}</span>
-        </div>
-  </div>
+    <input class="input-field" *ngIf="!isTextArea; else showTextArea"
+           [type]="type"
+           [maxLength]="maxCharLength"
+           [placeholder]="!required ? placeholder : placeholder + '*'"
+           [required]="required"
+           [ngModel]="text"
+           [autocomplete]="autocomplete"
+           (ngModelChange)="changeText($event)">
+
+    <ng-template #showTextArea>
+        <textarea class="input-field"
+                [maxLength]="maxCharLength"
+                [placeholder]="!required ? placeholder : placeholder + '*'"
+                [required]="required"
+                [ngModel]="text"
+                (ngModelChange)="changeText($event)">
+
+        </textarea>
+    </ng-template>
+    <div *ngIf="hasMaxCharLength" class="footer">
+        <span> {{getTextLength()}}/{{maxCharLength}}</span>
+    </div>
+</div>

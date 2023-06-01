@@ -1,11 +1,11 @@
 <div class="body">
     <div class="grid">
-        <div (click)="showSpot(spot.spot.id)" class="grid-item" *ngFor="let spot of spots">
+        <div routerLink="../../spot/{{spot.id}}" class="grid-item" *ngFor="let spot of spots">
             <div class="spots-div">
                 <div class="wrapper">
                     <img class="spot-img" src="{{getSpotImage(spot)}}" alt="image">
                 </div>
-                <h3>{{spot.spot.description}}</h3>
+                <h3>{{spot.description}}</h3>
             </div>
         </div>
     </div>

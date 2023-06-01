@@ -45,15 +45,23 @@ import {MatSelectModule} from "@angular/material/select";
 import {SelectComponent} from './components/select/select.component';
 import {AdminComponent} from './views/admin/admin.component';
 import {SpotComponent} from './views/spot/spot.component';
-import { HomePageSubMenuComponent } from './views/home-page/home-page-sub-menu/home-page-sub-menu.component';
-import { SubMenuItemComponent } from './views/home-page/home-page-sub-menu/sub-menu-item/sub-menu-item.component';
+import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
+import { SubMenuItemComponent } from './components/sub-menu/sub-menu-item/sub-menu-item.component';
 import { SingleSelectComponent } from './components/single-select/single-select.component';
 import { SearchComponent } from './components/search/search.component';
+import { SpotProfileComponent } from './views/spot/spot-profile/spot-profile.component';
+import { SpotRatingComponent } from './views/spot/spot-rating/spot-rating.component';
+import { SpotTypeListComponent } from './components/spot-type-list/spot-type-list.component';
+import { StarsComponent } from './components/stars/stars.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { RateSpotComponent } from './views/spot/spot-rating/rate-spot/rate-spot.component';
+import { StarPickerComponent } from './components/star-picker/star-picker.component';
+import { SpotOptionsComponent } from './views/spot/spot-profile/spot-options/spot-options.component';
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
     {path: 'explore', component: ExploreSpotsComponent},
-    {path: 'profile/:username', component: ProfileSelecterComponent},
+    {path: 'user/:username', component: ProfileSelecterComponent},
     {path: 'spot/:id', component: SpotComponent},
     {path: 'admin', component: AdminComponent},
     {path: '404', component: NotFoundComponent},
@@ -89,10 +97,18 @@ const routes: Routes = [
         SelectComponent,
         AdminComponent,
         SpotComponent,
-        HomePageSubMenuComponent,
+        SubMenuComponent,
         SubMenuItemComponent,
         SingleSelectComponent,
         SearchComponent,
+        SpotProfileComponent,
+        SpotRatingComponent,
+        SpotTypeListComponent,
+        StarsComponent,
+        UserListComponent,
+        RateSpotComponent,
+        StarPickerComponent,
+        SpotOptionsComponent,
     ],
     imports: [
         MatButtonToggleModule,

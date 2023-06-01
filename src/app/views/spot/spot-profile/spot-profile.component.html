@@ -1,0 +1,15 @@
+<div class="vertical-div container">
+    <div class="horizontal-div profile-username">
+        <app-profile-picture size="90px" borderSize="4px" [username]="spot.user"></app-profile-picture>
+        <div class="vertical-div">
+            <div class="username-options-div">
+                <p class="username">{{spot.user}}</p>
+                <app-spot-options [spotId]="spot.id"></app-spot-options>
+            </div>
+            <p class="create-date">{{spot.createdAt}}</p>
+        </div>
+    </div>
+    <p class="location">{{spot.location.city}}</p>
+    <app-spot-type-list [spotTypes]="spot.spotTypes"></app-spot-type-list>
+    <p class="description">{{spot.description}}</p>
+</div>

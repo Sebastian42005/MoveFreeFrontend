@@ -1,0 +1,64 @@
+.horizontal-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .username-options-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .spot-options {
+      position: absolute;
+      top: 40px;
+      right: 20px;
+      height: 100px;
+      width: 100px;
+      background: white;
+    }
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  gap: 10px;
+
+  .profile-username {
+    gap: 10px;
+    align-items: center;
+
+    .username {
+      font-size: 2.2rem;
+    }
+
+    .create-date {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+  }
+
+  .location {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .description {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  app-spot-type-list {
+    margin-top: 10px;
+  }
+}

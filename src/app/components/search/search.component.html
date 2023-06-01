@@ -1,9 +1,19 @@
-<form class="form">
-  <button [disabled]="isLoading" (click)="searchSpot()">
-    <mat-icon>search</mat-icon>
-  </button>
-  <input [disabled]="isLoading" name="search" class="input" placeholder="Search Spot" type="text" [(ngModel)]="search">
-  <button [disabled]="isLoading" [@scaleAnimation]="search.length > 0 ? 'show' : 'hide'" (click)="search = ''">
-    <mat-icon>close</mat-icon>
-  </button>
-</form>
+<div class="container">
+    <app-user-list [searchEmitter]="searchUserEmitter" [showUserList]="showUserList"></app-user-list>
+    <form class="form">
+        <button [disabled]="isLoading" (click)="searchByMode()">
+            <mat-icon>search</mat-icon>
+        </button>
+        <input [disabled]="isLoading" autocomplete="off" name="search" class="input" [placeholder]="placeholder" type="text"
+               [(ngModel)]="search">
+        <button class="right-button change-mode" [@scaleAnimation]="search.length > 0 ? 'hide' : 'show'"
+                (click)="changeSearchMode()">
+            <mat-icon *ngIf="searchingSpot">location_on</mat-icon>
+            <mat-icon *ngIf="!searchingSpot">person</mat-icon>
+        </button>
+        <button class="right-button" [disabled]="isLoading" [@scaleAnimation]="search.length > 0 ? 'show' : 'hide'"
+                (click)="search = ''; oldSearch = ''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </form>
+</div>

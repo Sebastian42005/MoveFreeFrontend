@@ -5,7 +5,7 @@ import {RegisterComponent} from "../../../components/login/register/register.com
 import {LoginComponent, loginEmitter} from "../../../components/login/login/login.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Role} from "../../../api/dataclasses/Role";
-import {logoutEmitter} from "../../home-page/home-page-sub-menu/home-page-sub-menu.component";
+import {logoutEmitter} from "../../../components/sub-menu/sub-menu.component";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,10 +13,12 @@ import {Router} from "@angular/router";
   templateUrl: './explore-spots-header.component.html',
   styleUrls: ['./explore-spots-header.component.scss']
 })
-export class ExploreSpotsHeaderComponent implements OnInit{
+export class ExploreSpotsHeaderComponent implements OnInit {
   @Input() isLoading = true;
-  isLoggedIn = false
-  username = ""
+  @Input() search = "";
+  isLoggedIn = false;
+  userLoaded = false;
+  username = "";
 
   constructor(private apiService: ApiService,
               private matDialog: MatDialog,
@@ -39,12 +41,20 @@ export class ExploreSpotsHeaderComponent implements OnInit{
   checkForLogin() {
     let token = LocalStorageManager.getToken();
     if (token != null && token.length > 0) {
-      this.apiService.getOwnProfile().subscribe(response => {
-        this.setLoggedIn(response.username);
-      }, () => {
-        LocalStorageManager.removeTokenAndUsername();
-        this.isLoggedIn = false;
-      });
+      this.apiService.getOwnName().subscribe({
+        next: response => {
+          this.userLoaded = true;
+          this.setLoggedIn(response.username);
+        },
+        error: () => {
+          this.userLoaded = true;
+          LocalStorageManager.removeTokenAndUsername();
+          this.isLoggedIn = false;
+        }
+      })
+    }else {
+      this.userLoaded = true;
+      this.isLoggedIn = false;
     }
     loginEmitter.subscribe(userRole => {
       this.setLoggedIn(userRole.username)

@@ -7,7 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 export class InfosComponent {
   @Input() infos= [
-    {title: "Follower", value: "200", image: "assets/images/follower.png"},
-    {title: "Follows", value: "250", image: "assets/images/follows.png"}
+    {title: "Follower", value: "", image: "assets/images/follower.png"}
   ]
 }

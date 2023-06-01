@@ -1,11 +1,11 @@
 <div class="body">
   <h1>Find User</h1>
   <div class="users-div">
-    <div class="user" *ngFor="let user of users">
+    <div class="user" *ngFor="let user of users" routerLink="/user/{{user}}">
       <div>
-        <img src="{{user.url}}" alt="Profile Image">
+        <img src="{{getUserProfile(user)}}" alt="Profile Image">
       </div>
-      <h2>{{user.name}}</h2>
+      <h2>{{user}}</h2>
     </div>
   </div>
 </div>

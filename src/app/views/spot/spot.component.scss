@@ -1,7 +1,22 @@
 .container {
+  .horizontal-div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .vertical-div {
+    display: flex;
+    flex-direction: column;
+  }
+
   gallery {
-    width: 65vw;
-    height: 70vh;
+    width: 58vw;
+    height: 57vh;
+  }
+
+  app-spot-profile {
+    width: 42vw;
+    margin: 20px;
   }
 }
 

@@ -14,7 +14,7 @@ export class SingleSelectComponent {
     }
   ]
   @Output() selectedOptionChange = new EventEmitter<string>();
-  selectedOption = "";
+  @Input() selectedOption = "";
   isOpen = false;
 
   constructor(private elementRef: ElementRef) {

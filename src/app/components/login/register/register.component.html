@@ -1,14 +1,22 @@
 <div class="body">
   <h1>Create a MoveFree Account</h1>
-  <app-input-validator [maxCharLength]=40 placeholder="Username" (textChange)="canRegisterUsername($event)"
+  <app-input-validator [maxCharLength]=40
+                       placeholder="Username"
+                       autocomplete="username"
+                       (textChange)="canRegisterUsername($event)"
                        [required]=true
                        [(text)]="username"></app-input-validator>
-  <app-input-validator class="email" placeholder="Email"
+  <app-input-validator class="email"
+                       placeholder="Email"
+                       type="email"
+                       autocomplete="email"
                        [hasMaxCharLength]=false
                        (textChange)="canRegisterEmail($event)"
                        [required]=true
                        [(text)]="email"></app-input-validator>
-  <app-input-validator placeholder="Password" type="password"
+  <app-input-validator placeholder="Password"
+                       type="password"
+                       autocomplete="current-password"
                        (textChange)="canRegisterPassword($event)"
                        [required]=true
                        [(text)]="password"
