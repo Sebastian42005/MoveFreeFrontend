@@ -1,7 +1,7 @@
 <div class="container" *ngIf="user">
     <div class="header">
-        <app-profile-picture [borderSize]="scrWidth > 1200 ? '0.3vw' : '3px'"
-                             [size]="scrWidth > 1500 ? scrWidth > 2000 ? '5vw': '6vw' : '100px'"
+        <app-profile-picture [borderSize]="'4px'"
+                             [size]="'100px'"
                              [username]="user.username"></app-profile-picture>
         <div class="user-info-div">
             <h1>{{user.username}}</h1>
@@ -28,7 +28,7 @@
         <div class="savedSpots" [hidden]="navigation === 'spots'">
             <app-user-spot-list [savedSpots]=true [username]="user.username"></app-user-spot-list>
         </div>
-        <button *ngIf="navigation == 'spots'" (click)="openUploadSpotDialog()" class="upload-spot-button" mat-fab matTooltip="Upload Spot" color="primary">
+        <button *ngIf="navigation == 'spots'" (click)="openUploadSpotDialog()" class="upload-spot-button" mat-fab matTooltip="Upload Spot" color="accent">
             <mat-icon>add</mat-icon>
         </button>
     </div>

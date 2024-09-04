@@ -1,0 +1,9 @@
+.map {
+  height: 100vh;
+  width: 100vw;
+}
+
+::ng-deep .ol-overlaycontainer-stopevent {
+  display: none !important;
+}
+
