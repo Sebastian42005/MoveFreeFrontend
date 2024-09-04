@@ -1,5 +1,5 @@
 <div [ngStyle]="{'top': top, 'right': right}" class="menu" [@changeHeightAnimation]="showSubMenu ? 'open' : 'close'">
-  <div *ngIf="hasProfile" [routerLink]="profileLink" class="user-div">
+  <div *ngIf="hasProfile" (click)="navigateToUser()" class="user-div">
     <app-profile-picture [username]="username" size="50px" borderSize="2px"></app-profile-picture>
     <p>{{username}}</p>
   </div>

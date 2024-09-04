@@ -4,7 +4,6 @@
 </div>
 <app-sub-menu *ngIf="isLoggedIn && username"
                         [showSubMenu]="showSubMenu"
-                        [profileLink]="profilePath + '/' + username"
                         [username]="username"
                         [hasProfile]=true
                         [menuItems]="menuOptionIcons"></app-sub-menu>

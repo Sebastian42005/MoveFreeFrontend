@@ -9,7 +9,7 @@ export class NotFoundComponent {
 
     @Input() message = "Page not found"
     @Input() width = "100vw"
-    @Input() height = "100vh"
+    @Input() height = "90vh"
 
     private images = [
         "../../../assets/images/notfound/not_found.PNG",

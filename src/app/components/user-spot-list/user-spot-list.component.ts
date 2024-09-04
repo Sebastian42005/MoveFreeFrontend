@@ -3,7 +3,6 @@ import {ApiService, getSpotImage} from "../../api/api.service";
 import {Spot} from "../../api/dataclasses/Spot";
 import {isUploadFinishedEventEmitter} from "../upload-spot/upload-spot.component";
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-spot-list',
@@ -40,7 +39,9 @@ export class UserSpotListComponent implements OnInit {
 
   isUploadFinished() {
     isUploadFinishedEventEmitter.subscribe(spot => {
-      this.spots.push(spot);
+      if (!this.savedSpots) {
+        this.spots.push(spot);
+      }
     });
   }
 

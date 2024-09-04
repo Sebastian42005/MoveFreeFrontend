@@ -2,15 +2,15 @@
     <div class="search-spot-wrapper">
         <app-search [search]="search" [isLoading]="isLoading"></app-search>
     </div>
-    <h1 routerLink="" class="title">Move Free</h1>
+    <h1 routerLink="" class="title">Spotcheck</h1>
   <div *ngIf="userLoaded" class="login-div">
     <div *ngIf="!isLoggedIn">
       <p class="login-p" (click)="openLoginDialog()">Login</p>
       <p class="register-p" (click)="openRegisterDialog()">Register</p>
     </div>
-    <app-profile-picture *ngIf="isLoggedIn"
-                         [isLoggedIn]="isLoggedIn"
-                         profilePath="../user"
-                         [username]="username"></app-profile-picture>
+      <app-profile-picture *ngIf="isLoggedIn"
+                           [isLoggedIn]="isLoggedIn"
+                           size="60px"
+                           [username]="username"></app-profile-picture>
   </div>
 </div>
