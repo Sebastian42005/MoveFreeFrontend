@@ -15,10 +15,10 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class SpotRatingComponent implements OnInit {
     @Input() spot: Spot = {
-        "id": "",
+        "id": 0,
         "description": "",
         "location": {
-            "id": "",
+            "id": 0,
             "latitude": 0,
             "longitude": 0,
             "city": ""

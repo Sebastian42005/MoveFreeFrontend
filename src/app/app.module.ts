@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {MatButtonModule} from "@angular/material/button";
 import {HomePageComponent} from './views/home-page/home-page.component';
 import {
-    HomePageExploreSpotsComponent
+  HomePageExploreSpotsComponent
 } from './views/home-page/home-page-explore-spots/home-page-explore-spots.component';
 import {HomePageInfoComponent} from './views/home-page/home-page-info/home-page-info.component';
 import {HomePageHeaderComponent} from './views/home-page/home-page-header/home-page-header.component';
@@ -45,105 +45,117 @@ import {MatSelectModule} from "@angular/material/select";
 import {SelectComponent} from './components/select/select.component';
 import {AdminComponent} from './views/admin/admin.component';
 import {SpotComponent} from './views/spot/spot.component';
-import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
-import { SubMenuItemComponent } from './components/sub-menu/sub-menu-item/sub-menu-item.component';
-import { SingleSelectComponent } from './components/single-select/single-select.component';
-import { SearchComponent } from './components/search/search.component';
-import { SpotProfileComponent } from './views/spot/spot-profile/spot-profile.component';
-import { SpotRatingComponent } from './views/spot/spot-rating/spot-rating.component';
-import { SpotTypeListComponent } from './components/spot-type-list/spot-type-list.component';
-import { StarsComponent } from './components/stars/stars.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { RateSpotComponent } from './views/spot/spot-rating/rate-spot/rate-spot.component';
-import { StarPickerComponent } from './components/star-picker/star-picker.component';
-import { SpotOptionsComponent } from './views/spot/spot-profile/spot-options/spot-options.component';
+import {SubMenuComponent} from './components/sub-menu/sub-menu.component';
+import {SubMenuItemComponent} from './components/sub-menu/sub-menu-item/sub-menu-item.component';
+import {SingleSelectComponent} from './components/single-select/single-select.component';
+import {SearchComponent} from './components/search/search.component';
+import {SpotProfileComponent} from './views/spot/spot-profile/spot-profile.component';
+import {SpotRatingComponent} from './views/spot/spot-rating/spot-rating.component';
+import {SpotTypeListComponent} from './components/spot-type-list/spot-type-list.component';
+import {StarsComponent} from './components/stars/stars.component';
+import {UserListComponent} from './components/user-list/user-list.component';
+import {RateSpotComponent} from './views/spot/spot-rating/rate-spot/rate-spot.component';
+import {StarPickerComponent} from './components/star-picker/star-picker.component';
+import {SpotOptionsComponent} from './views/spot/spot-profile/spot-options/spot-options.component';
+import {AdminUserComponent} from './views/admin/user/admin-user/admin-user.component';
+import {AdminCreateUserComponent} from './views/admin/user/admin-create-user/admin-create-user.component';
+import {AdminDetailUserComponent} from './views/admin/user/admin-detail-user/admin-detail-user.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 const routes: Routes = [
-    {path: '', component: HomePageComponent},
-    {path: 'explore', component: ExploreSpotsComponent},
-    {path: 'user/:username', component: ProfileSelecterComponent},
-    {path: 'spot/:id', component: SpotComponent},
-    {path: 'admin', component: AdminComponent},
-    {path: '404', component: NotFoundComponent},
-    {path: '**', component: NotFoundComponent},
+  {path: '', component: HomePageComponent},
+  {path: 'explore', component: ExploreSpotsComponent},
+  {path: 'user/:username', component: ProfileSelecterComponent},
+  {path: 'spot/:id', component: SpotComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomePageComponent,
-        HomePageExploreSpotsComponent,
-        HomePageInfoComponent,
-        HomePageHeaderComponent,
-        HomePageExploreUserComponent,
-        RegisterComponent,
-        InputValidatorComponent,
-        LoginComponent,
-        PopupInfoComponent,
-        ExploreSpotsComponent,
-        ExploreSpotsHeaderComponent,
-        ExploreSpotsFilterComponent,
-        ProfilePictureComponent,
-        ProfileSelecterComponent,
-        UserProfileComponent,
-        OwnProfileComponent,
-        ButtonComponent,
-        NotFoundComponent,
-        NotFoundComponent,
-        LoadingComponent,
-        InfosComponent,
-        UserSpotListComponent,
-        UploadSpotComponent,
-        SelectComponent,
-        AdminComponent,
-        SpotComponent,
-        SubMenuComponent,
-        SubMenuItemComponent,
-        SingleSelectComponent,
-        SearchComponent,
-        SpotProfileComponent,
-        SpotRatingComponent,
-        SpotTypeListComponent,
-        StarsComponent,
-        UserListComponent,
-        RateSpotComponent,
-        StarPickerComponent,
-        SpotOptionsComponent,
-    ],
-    imports: [
-        MatButtonToggleModule,
-        HttpClientModule,
-        BrowserModule,
-        GalleryModule,
-        MatButtonModule,
-        MatAutocompleteModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatGridListModule,
-        MatInputModule,
-        MatIconModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatSnackBarModule,
-        RouterModule.forRoot(routes),
-        MatTooltipModule,
-        MatSelectModule
-    ],
-    exports: [
-        RouterModule
-    ],
-    providers: [
-        {
-            provide: GALLERY_CONFIG,
-            useValue: {
-                dots: true,
-                imageSize: 'cover'
-            }
-        }
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    HomePageExploreSpotsComponent,
+    HomePageInfoComponent,
+    HomePageHeaderComponent,
+    HomePageExploreUserComponent,
+    RegisterComponent,
+    InputValidatorComponent,
+    LoginComponent,
+    PopupInfoComponent,
+    ExploreSpotsComponent,
+    ExploreSpotsHeaderComponent,
+    ExploreSpotsFilterComponent,
+    ProfilePictureComponent,
+    ProfileSelecterComponent,
+    UserProfileComponent,
+    OwnProfileComponent,
+    ButtonComponent,
+    NotFoundComponent,
+    NotFoundComponent,
+    LoadingComponent,
+    InfosComponent,
+    UserSpotListComponent,
+    UploadSpotComponent,
+    SelectComponent,
+    AdminComponent,
+    SpotComponent,
+    SubMenuComponent,
+    SubMenuItemComponent,
+    SingleSelectComponent,
+    SearchComponent,
+    SpotProfileComponent,
+    SpotRatingComponent,
+    SpotTypeListComponent,
+    StarsComponent,
+    UserListComponent,
+    RateSpotComponent,
+    StarPickerComponent,
+    SpotOptionsComponent,
+    AdminUserComponent,
+    AdminCreateUserComponent,
+    AdminDetailUserComponent,
+  ],
+  imports: [
+    MatButtonToggleModule,
+    HttpClientModule,
+    BrowserModule,
+    GalleryModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatInputModule,
+    MatIconModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    RouterModule.forRoot(routes),
+    MatTooltipModule,
+    MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+  ],
+  exports: [
+    RouterModule
+  ],
+  providers: [
+    {
+      provide: GALLERY_CONFIG,
+      useValue: {
+        dots: true,
+        imageSize: 'cover'
+      }
+    }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -11,7 +11,7 @@ import {showMessageEmitter} from "../../../../app.component";
 })
 export class SpotOptionsComponent implements OnInit {
 
-    @Input() spotId: string = "";
+    @Input() spotId: number = 0;
 
     constructor(private apiService: ApiService, private elementRef: ElementRef, private router: Router) {
     }

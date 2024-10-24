@@ -81,15 +81,10 @@ $dark-theme: mat.define-light-theme((
     primary: mat.define-palette($dark-primary-palette),
     accent: mat.define-palette($dark-accent-palette),
   ),
-  // Only include `typography` and `density` in the default dark theme.
-  typography: mat.define-typography-config(),
-  density: 0,
 ));
 
-// Apply the dark theme by default
+// Wende das Core-Theme und alle Komponenten-Themen an
 @include mat.all-component-themes($dark-theme);
-@include mat.autocomplete-theme($dark-theme);
-@include mat.button-theme($dark-theme);
 
 :root {
   --text-color: white;

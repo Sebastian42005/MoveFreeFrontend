@@ -1,5 +1,5 @@
 export interface Rating {
-    id: string;
+    id: number;
     message: string
     stars: number;
     username: string;

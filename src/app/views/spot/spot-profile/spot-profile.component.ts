@@ -9,10 +9,10 @@ import {Spot} from "../../../api/dataclasses/Spot";
 export class SpotProfileComponent {
 
     @Input() spot: Spot = {
-        "id": "",
+        "id": 0,
         "description": "",
         "location": {
-            "id": "",
+            "id": 0,
             "latitude": 0,
             "longitude": 0,
             "city": ""

@@ -16,16 +16,16 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getSpotRating(spotId: string): Observable<Rating[]> {
+  getSpotRating(spotId: number): Observable<Rating[]> {
     return this.get(`/spot/${spotId}/ratings`)
   }
 
-  rateSpot(spotId: string, message: string, stars: number): Observable<Rating> {
+  rateSpot(spotId: number, message: string, stars: number): Observable<Rating> {
     let body = {message: message, stars: stars}
     return this.put(`/spot/${spotId}/rate`, body)
   }
 
-  getAllSpots(spotType: string, search?: string, alreadySeenList?: string[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
+  getAllSpots(spotType: string, search?: string, alreadySeenList?: number[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
     spotType = spotType ? spotType : ""
     search = search ? search : ""
     alreadySeenList = alreadySeenList ? alreadySeenList : []
@@ -33,17 +33,17 @@ export class ApiService {
     return this.get(`/spot/all?search=${search.toString()}&limit=${limit}&spotType=${spotType}&alreadySeenList=${alreadySeenList}`)
   }
 
-  getSavedSpots(alreadySeenList?: string[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
+  getSavedSpots(alreadySeenList?: number[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
     alreadySeenList = alreadySeenList ? alreadySeenList : []
     limit = limit ? limit : 5
     return this.get(`/spot/saved?limit=${limit}&alreadySeenList=${alreadySeenList}`)
   }
 
-  saveSpot(id: string): Observable<any> {
+  saveSpot(id: number): Observable<any> {
     return this.put(`/spot/${id}/save`, {})
   }
 
-  getIsSaved(id: string): Observable<any> {
+  getIsSaved(id: number): Observable<any> {
     return this.get(`/spot/${id}/isSaved`)
   }
 
@@ -51,7 +51,7 @@ export class ApiService {
     return this.get(`/user/top`)
   }
 
-  getSpot(spotId: string): Observable<Spot> {
+  getSpot(spotId: number): Observable<Spot> {
     return this.get(`/spot/${spotId}`)
   }
 
@@ -109,8 +109,26 @@ export class ApiService {
     });
   }
 
-  deleteSpot(spotId: string): Observable<any> {
+  deleteSpot(spotId: number): Observable<any> {
     return this.delete(`/spot/${spotId}`)
+  }
+
+  //User
+
+  createUser(user: User): Observable<User> {
+    return this.post<User>('/user', user)
+  }
+
+  updateUser(user: User) {
+    return this.put<User>('/user', user)
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.get<User[]>('/user')
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this.delete(`/user/${id}`)
   }
 
   getOwnProfile(): Observable<User> {
@@ -129,7 +147,7 @@ export class ApiService {
     return this.get("/user/own/username")
   }
 
-  getUserSpots(username: string, alreadySeenList?: string[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
+  getUserSpots(username: string, alreadySeenList?: number[], limit?: number): Observable<{hasMore: boolean, spots: Spot[]}> {
     username = username ? username : ""
     alreadySeenList = alreadySeenList ? alreadySeenList : []
     limit = limit ? limit : 5
@@ -171,7 +189,7 @@ export class ApiService {
 
 export const baseUrl = 'http://localhost:8080/api'
 
-export function getSpotImage(pictureId: string): string {
+export function getSpotImage(pictureId: number): string {
   return "http://localhost:8080/api" + `/spot/images/${pictureId}`
 }
 

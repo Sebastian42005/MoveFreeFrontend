@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "bezier-easing"
+            ],
             "outputPath": "dist/move-free-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",

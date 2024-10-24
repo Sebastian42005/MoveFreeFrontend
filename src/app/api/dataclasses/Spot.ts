@@ -1,16 +1,16 @@
 export interface Spot {
-    id: string;
+    id: number;
     description: string;
     location: Location;
     spotTypes: string[];
     createdAt: string;
     user: string;
     rating: number;
-    pictures: string[];
+    pictures: number[];
 }
 
 export interface Location {
-    id: string;
+    id: number;
     latitude: number;
     longitude: number;
     city: string;
